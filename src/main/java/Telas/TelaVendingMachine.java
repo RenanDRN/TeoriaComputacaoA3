@@ -26,6 +26,8 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Donnut1 = new javax.swing.JLabel();
+        Maquina = new javax.swing.JLabel();
         Carteira = new javax.swing.JLabel();
         btnMoeda1 = new javax.swing.JButton();
         btnNota2 = new javax.swing.JButton();
@@ -34,6 +36,13 @@ public class TelaVendingMachine extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Donnut1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/donut1 (1).png"))); // NOI18N
+        getContentPane().add(Donnut1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 130, 70, 80));
+
+        Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/maquina_vazia_fechado (1).png"))); // NOI18N
+        Maquina.setPreferredSize(new java.awt.Dimension(480, 710));
+        getContentPane().add(Maquina, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 10, -1, -1));
 
         Carteira.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Carteira.png"))); // NOI18N
         getContentPane().add(Carteira, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 490, 420));
@@ -123,6 +132,8 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
     private javax.swing.JLabel Carteira;
+    private javax.swing.JLabel Donnut1;
+    private javax.swing.JLabel Maquina;
     private javax.swing.JButton btnMoeda1;
     private javax.swing.JButton btnNota2;
     private javax.swing.JButton btnNota5;
