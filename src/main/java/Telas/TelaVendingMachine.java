@@ -26,18 +26,64 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        Carteira = new javax.swing.JLabel();
+        btnMoeda1 = new javax.swing.JButton();
+        btnNota2 = new javax.swing.JButton();
+        btnNota5 = new javax.swing.JButton();
+        Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1400, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/BackgroundVendingMachine.png"))); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(1400, 800));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        Carteira.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Carteira.png"))); // NOI18N
+        getContentPane().add(Carteira, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 490, 420));
+
+        btnMoeda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/1real.png"))); // NOI18N
+        btnMoeda1.setContentAreaFilled(false);
+        btnMoeda1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMoeda1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnMoeda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, 210, 230));
+
+        btnNota2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/2reais.jpg"))); // NOI18N
+        btnNota2.setBorder(null);
+        btnNota2.setContentAreaFilled(false);
+        btnNota2.setPreferredSize(new java.awt.Dimension(190, 360));
+        btnNota2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNota2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNota2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, -1, -1));
+
+        btnNota5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/5reais.jpg"))); // NOI18N
+        btnNota5.setContentAreaFilled(false);
+        btnNota5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNota5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNota5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 190, 360));
+
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/BackgroundVendingMachine.png"))); // NOI18N
+        getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNota5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNota5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNota5ActionPerformed
+
+    private void btnNota2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNota2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNota2ActionPerformed
+
+    private void btnMoeda1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoeda1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMoeda1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -75,6 +121,10 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel Background;
+    private javax.swing.JLabel Carteira;
+    private javax.swing.JButton btnMoeda1;
+    private javax.swing.JButton btnNota2;
+    private javax.swing.JButton btnNota5;
     // End of variables declaration//GEN-END:variables
 }
