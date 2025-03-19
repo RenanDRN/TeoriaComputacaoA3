@@ -37,6 +37,7 @@ public class TelaMenu extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu");
         setMinimumSize(new java.awt.Dimension(583, 373));
         addWindowStateListener(new java.awt.event.WindowStateListener() {
             public void windowStateChanged(java.awt.event.WindowEvent evt) {
@@ -86,7 +87,9 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowStateChanged
 
     private void btnVendingMachineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendingMachineActionPerformed
-        // TODO add your handling code here:
+        TelaVendingMachine vendingMachine = new TelaVendingMachine();
+        vendingMachine.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnVendingMachineActionPerformed
 
     private void btnVendingMachineMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendingMachineMouseEntered
