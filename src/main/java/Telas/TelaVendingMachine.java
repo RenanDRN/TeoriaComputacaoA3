@@ -45,6 +45,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         Candy4 = new javax.swing.JLabel();
         Candy3 = new javax.swing.JLabel();
         Candy2 = new javax.swing.JLabel();
+        DoceEscolhido = new javax.swing.JLabel();
         FundoMaquina = new javax.swing.JLabel();
         Carteira = new javax.swing.JLabel();
         btnMoeda1 = new javax.swing.JButton();
@@ -135,6 +136,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
 
         Candy2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_2_escuro-8.png"))); // NOI18N
         getContentPane().add(Candy2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 270, 110, 120));
+        getContentPane().add(DoceEscolhido, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 630, 120, 100));
 
         FundoMaquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/fundo_roxo_maquina-8.png"))); // NOI18N
         getContentPane().add(FundoMaquina, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 390, 560));
@@ -284,6 +286,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     private javax.swing.JLabel Choco1;
     private javax.swing.JLabel Choco2;
     private javax.swing.JLabel Choco3;
+    private javax.swing.JLabel DoceEscolhido;
     private javax.swing.JLabel Donut1;
     private javax.swing.JLabel Donut2;
     private javax.swing.JLabel Donut3;
