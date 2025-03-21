@@ -51,7 +51,7 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnVendingMachine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/btnVendingMachineOff.png"))); // NOI18N
+        btnVendingMachine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/btnVendingMachineOff.png"))); // NOI18N
         btnVendingMachine.setBorder(null);
         btnVendingMachine.setContentAreaFilled(false);
         btnVendingMachine.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -75,7 +75,7 @@ public class TelaMenu extends javax.swing.JFrame {
         jLabel2.setText("CASES");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, -1, 50));
 
-        Backgroud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/BackgroundMenu.jpg"))); // NOI18N
+        Backgroud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/BackgroundMenu.jpg"))); // NOI18N
         getContentPane().add(Backgroud, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -93,7 +93,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVendingMachineActionPerformed
 
     private void btnVendingMachineMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendingMachineMouseEntered
-      btnVendingMachine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/btnVendingMachineOn.png")));
+      btnVendingMachine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/btnVendingMachineOn.png")));
     }//GEN-LAST:event_btnVendingMachineMouseEntered
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -101,7 +101,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void btnVendingMachineMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendingMachineMouseExited
-        btnVendingMachine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/btnVendingMachineOff.png")));
+        btnVendingMachine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/btnVendingMachineOff.png")));
     }//GEN-LAST:event_btnVendingMachineMouseExited
 
     /**
