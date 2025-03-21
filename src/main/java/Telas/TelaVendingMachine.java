@@ -26,10 +26,26 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Choco1 = new javax.swing.JLabel();
+        Choco2 = new javax.swing.JLabel();
+        Choco3 = new javax.swing.JLabel();
+        btnCandy = new javax.swing.JButton();
+        btnChoco = new javax.swing.JButton();
+        btnDonut = new javax.swing.JButton();
+        btnPegar = new javax.swing.JButton();
         textHelp = new javax.swing.JLabel();
         textHelp1 = new javax.swing.JLabel();
         textHelp2 = new javax.swing.JLabel();
+        valorMaquina = new javax.swing.JLabel();
         Maquina = new javax.swing.JLabel();
+        Donut3 = new javax.swing.JLabel();
+        Donut2 = new javax.swing.JLabel();
+        Donut1 = new javax.swing.JLabel();
+        Candy1 = new javax.swing.JLabel();
+        Candy4 = new javax.swing.JLabel();
+        Candy3 = new javax.swing.JLabel();
+        Candy2 = new javax.swing.JLabel();
+        FundoMaquina = new javax.swing.JLabel();
         Carteira = new javax.swing.JLabel();
         btnMoeda1 = new javax.swing.JButton();
         btnNota2 = new javax.swing.JButton();
@@ -37,7 +53,35 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         Background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Vending Machine");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Choco1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_choco_3-8.png"))); // NOI18N
+        getContentPane().add(Choco1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 410, 110, 120));
+
+        Choco2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_choco_1-8.png"))); // NOI18N
+        getContentPane().add(Choco2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 410, 110, 120));
+
+        Choco3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_choco_2-8.png"))); // NOI18N
+        getContentPane().add(Choco3, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 410, 110, 120));
+
+        btnCandy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_candy_escuro-8.png"))); // NOI18N
+        btnCandy.setContentAreaFilled(false);
+        btnCandy.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().add(btnCandy, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 140, 100, 40));
+
+        btnChoco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_choco_escuro-8.png"))); // NOI18N
+        btnChoco.setContentAreaFilled(false);
+        getContentPane().add(btnChoco, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 190, 100, 40));
+
+        btnDonut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_donut_escuro-8.png"))); // NOI18N
+        btnDonut.setContentAreaFilled(false);
+        btnDonut.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        getContentPane().add(btnDonut, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 90, 100, 40));
+
+        btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_tradicional-8.png"))); // NOI18N
+        btnPegar.setContentAreaFilled(false);
+        getContentPane().add(btnPegar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 540, 100, 70));
 
         textHelp.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         textHelp.setForeground(new java.awt.Color(255, 255, 255));
@@ -61,9 +105,39 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         textHelp2.setToolTipText("");
         getContentPane().add(textHelp2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 520, 60));
 
-        Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/maquina_vazia_fechado.png"))); // NOI18N
+        valorMaquina.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
+        valorMaquina.setForeground(new java.awt.Color(255, 255, 255));
+        valorMaquina.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        valorMaquina.setText("00,00");
+        getContentPane().add(valorMaquina, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 500, 70, 20));
+
+        Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_fechado-8.png"))); // NOI18N
         Maquina.setPreferredSize(new java.awt.Dimension(550, 780));
-        getContentPane().add(Maquina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, -1, -1));
+        getContentPane().add(Maquina, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 580, 800));
+
+        Donut3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_donut_3-8.png"))); // NOI18N
+        getContentPane().add(Donut3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 100, 110, 120));
+
+        Donut2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_donut_2-8.png"))); // NOI18N
+        getContentPane().add(Donut2, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 100, 110, 120));
+
+        Donut1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_donut_1-8.png"))); // NOI18N
+        getContentPane().add(Donut1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 100, 110, 120));
+
+        Candy1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_1-8.png"))); // NOI18N
+        getContentPane().add(Candy1, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 270, 110, 120));
+
+        Candy4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_4-8.png"))); // NOI18N
+        getContentPane().add(Candy4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 270, 110, 120));
+
+        Candy3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_3-8.png"))); // NOI18N
+        getContentPane().add(Candy3, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 270, 130, 120));
+
+        Candy2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_2_escuro-8.png"))); // NOI18N
+        getContentPane().add(Candy2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 270, 110, 120));
+
+        FundoMaquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/fundo_roxo_maquina-8.png"))); // NOI18N
+        getContentPane().add(FundoMaquina, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 390, 560));
 
         Carteira.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Carteira.png"))); // NOI18N
         getContentPane().add(Carteira, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 490, 420));
@@ -202,13 +276,29 @@ public class TelaVendingMachine extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
+    private javax.swing.JLabel Candy1;
+    private javax.swing.JLabel Candy2;
+    private javax.swing.JLabel Candy3;
+    private javax.swing.JLabel Candy4;
     private javax.swing.JLabel Carteira;
+    private javax.swing.JLabel Choco1;
+    private javax.swing.JLabel Choco2;
+    private javax.swing.JLabel Choco3;
+    private javax.swing.JLabel Donut1;
+    private javax.swing.JLabel Donut2;
+    private javax.swing.JLabel Donut3;
+    private javax.swing.JLabel FundoMaquina;
     private javax.swing.JLabel Maquina;
+    private javax.swing.JButton btnCandy;
+    private javax.swing.JButton btnChoco;
+    private javax.swing.JButton btnDonut;
     private javax.swing.JButton btnMoeda1;
     private javax.swing.JButton btnNota2;
     private javax.swing.JButton btnNota5;
+    private javax.swing.JButton btnPegar;
     private javax.swing.JLabel textHelp;
     private javax.swing.JLabel textHelp1;
     private javax.swing.JLabel textHelp2;
+    private javax.swing.JLabel valorMaquina;
     // End of variables declaration//GEN-END:variables
 }
