@@ -315,7 +315,7 @@
     <Component class="javax.swing.JLabel" name="Carteira">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagens/Carteira.png"/>
+          <Image iconType="3" name="/ImagensVendingMachine/Carteira.png"/>
         </Property>
       </Properties>
       <Constraints>
@@ -327,7 +327,7 @@
     <Component class="javax.swing.JButton" name="btnMoeda1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagens/1real.png"/>
+          <Image iconType="3" name="/ImagensVendingMachine/1real.png"/>
         </Property>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
@@ -345,7 +345,7 @@
     <Component class="javax.swing.JButton" name="btnNota2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagens/2reais.jpg"/>
+          <Image iconType="3" name="/ImagensVendingMachine/2reais.jpg"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
@@ -372,7 +372,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagens/5reais.jpg"/>
+          <Image iconType="3" name="/ImagensVendingMachine/5reais.jpg"/>
         </Property>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
@@ -390,7 +390,7 @@
     <Component class="javax.swing.JLabel" name="Background">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagens/BackgroundVendingMachine.png"/>
+          <Image iconType="3" name="/ImagensVendingMachine/BackgroundVendingMachine.png"/>
         </Property>
       </Properties>
       <Constraints>

@@ -141,10 +141,10 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         FundoMaquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/fundo_roxo_maquina-8.png"))); // NOI18N
         getContentPane().add(FundoMaquina, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 390, 560));
 
-        Carteira.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/Carteira.png"))); // NOI18N
+        Carteira.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/Carteira.png"))); // NOI18N
         getContentPane().add(Carteira, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 490, 420));
 
-        btnMoeda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/1real.png"))); // NOI18N
+        btnMoeda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/1real.png"))); // NOI18N
         btnMoeda1.setContentAreaFilled(false);
         btnMoeda1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -161,7 +161,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         });
         getContentPane().add(btnMoeda1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 520, 210, 230));
 
-        btnNota2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/2reais.jpg"))); // NOI18N
+        btnNota2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/2reais.jpg"))); // NOI18N
         btnNota2.setBorder(null);
         btnNota2.setContentAreaFilled(false);
         btnNota2.setPreferredSize(new java.awt.Dimension(190, 360));
@@ -181,7 +181,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         getContentPane().add(btnNota2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 200, -1));
 
         btnNota5.setBackground(new java.awt.Color(255, 255, 255));
-        btnNota5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/5reais.jpg"))); // NOI18N
+        btnNota5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/5reais.jpg"))); // NOI18N
         btnNota5.setContentAreaFilled(false);
         btnNota5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -198,7 +198,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         });
         getContentPane().add(btnNota5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 190, 360));
 
-        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/BackgroundVendingMachine.png"))); // NOI18N
+        Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/BackgroundVendingMachine.png"))); // NOI18N
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -234,11 +234,11 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNota2MouseExited
 
     private void btnMoeda1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMoeda1MouseEntered
-        btnMoeda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/1realHover.png")));
+        btnMoeda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/1realHover.png")));
     }//GEN-LAST:event_btnMoeda1MouseEntered
 
     private void btnMoeda1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMoeda1MouseExited
-        btnMoeda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/1real.png")));
+        btnMoeda1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/1real.png")));
     }//GEN-LAST:event_btnMoeda1MouseExited
 
     /**

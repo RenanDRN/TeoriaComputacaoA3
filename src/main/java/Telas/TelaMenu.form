@@ -43,7 +43,7 @@
     <Component class="javax.swing.JButton" name="btnVendingMachine">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagens/btnVendingMachineOff.png"/>
+          <Image iconType="3" name="/ImagensVendingMachine/btnVendingMachineOff.png"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
@@ -83,7 +83,7 @@
     <Component class="javax.swing.JLabel" name="Backgroud">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Imagens/BackgroundMenu.jpg"/>
+          <Image iconType="3" name="/ImagensVendingMachine/BackgroundMenu.jpg"/>
         </Property>
       </Properties>
       <Constraints>
