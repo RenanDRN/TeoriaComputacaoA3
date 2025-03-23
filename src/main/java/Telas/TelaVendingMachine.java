@@ -4,6 +4,8 @@
  */
 package Telas;
 
+import com.mycompany.projetoa3comp.GerenciadorSaldo;
+
 /**
  *
  * @author Aline
@@ -16,6 +18,9 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     public TelaVendingMachine() {
         initComponents();
     }
+
+    // Variável que gerencia o saldo inserido na máquina
+    private GerenciadorSaldo gerenciadorSaldo = new GerenciadorSaldo(00.00);
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -198,6 +203,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         });
         getContentPane().add(btnNota5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 190, 360));
 
+
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/BackgroundVendingMachine.png"))); // NOI18N
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -205,16 +211,23 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void atualizarValorMaquina() {
+        valorMaquina.setText(gerenciadorSaldo.getSaldoFormatado());
+    }
+    
     private void btnNota5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNota5ActionPerformed
-        // TODO add your handling code here:
+        gerenciadorSaldo.adicionarSaldo(5.00);
+        atualizarValorMaquina();
     }//GEN-LAST:event_btnNota5ActionPerformed
 
     private void btnNota2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNota2ActionPerformed
-        // TODO add your handling code here:
+        gerenciadorSaldo.adicionarSaldo(2.00);
+        atualizarValorMaquina();
     }//GEN-LAST:event_btnNota2ActionPerformed
 
     private void btnMoeda1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoeda1ActionPerformed
-        // TODO add your handling code here:
+        gerenciadorSaldo.adicionarSaldo(1.00);
+        atualizarValorMaquina();
     }//GEN-LAST:event_btnMoeda1ActionPerformed
 
     private void btnNota5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNota5MouseEntered
