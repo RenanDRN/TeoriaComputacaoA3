@@ -21,13 +21,13 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     } else {
          btnDonut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_donut_escuro-8.png")));  
     }
-    if(saldo >= 8.00){
+    if(saldo >= 7.00){
         btnCandy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_candy_tradicional-8.png")));
         
     }else{
         btnCandy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_candy_escuro-8.png")));
     }
-    if(saldo >= 9.00){
+    if(saldo >= 8.00){
         btnChoco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_choco_tradicional-8.png")));
         
     }else{
@@ -83,10 +83,20 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         btnCandy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_candy_escuro-8.png"))); // NOI18N
         btnCandy.setContentAreaFilled(false);
         btnCandy.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnCandy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCandyActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnCandy, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 140, 100, 40));
 
         btnChoco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_choco_escuro-8.png"))); // NOI18N
         btnChoco.setContentAreaFilled(false);
+        btnChoco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChocoActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnChoco, new org.netbeans.lib.awtextra.AbsoluteConstraints(1200, 190, 100, 40));
 
         btnDonut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_donut_escuro-8.png"))); // NOI18N
@@ -263,7 +273,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNota5MouseExited
 
     private void btnNota2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNota2MouseEntered
-        btnNota2.setOpaque(true);
+        btnNota2.setOpaque(true); 
     }//GEN-LAST:event_btnNota2MouseEntered
 
     private void btnNota2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNota2MouseExited
@@ -279,8 +289,68 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMoeda1MouseExited
 
     private void btnDonutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonutActionPerformed
+        if (saldo >= 6.00) {
+        saldo -= 6;
+        valorMaquina.setText(String.format("%.2f", saldo));
+        btnDonut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_donut_amarelo-8.png")));
+        JOptionPane.showMessageDialog(this, "Donut Comprado com sucesso!", "Status: OK", JOptionPane.INFORMATION_MESSAGE); 
+
+        new Thread(() -> {
+            try {
+                Thread.sleep(200); 
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            atualizarBotoes(); 
+        }).start();
+    } else {
+        JOptionPane.showMessageDialog(this, "Saldo insuficiente!", "Aviso", JOptionPane.WARNING_MESSAGE);
+    }
 
     }//GEN-LAST:event_btnDonutActionPerformed
+
+    private void btnCandyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCandyActionPerformed
+        if (saldo >= 7.00) {
+        saldo -= 7;
+        valorMaquina.setText(String.format("%.2f", saldo));
+        btnCandy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_candy_amarelo-8.png")));
+        JOptionPane.showMessageDialog(this, "Candy Comprado com sucesso!", "Status: OK", JOptionPane.INFORMATION_MESSAGE); 
+
+        new Thread(() -> {
+            try {
+                Thread.sleep(200); 
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            atualizarBotoes(); 
+        }).start();
+    } else {
+        JOptionPane.showMessageDialog(this, "Saldo insuficiente!", "Aviso", JOptionPane.WARNING_MESSAGE);
+    }
+
+    }//GEN-LAST:event_btnCandyActionPerformed
+
+    private void btnChocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChocoActionPerformed
+       if (saldo >= 8.00) {
+        saldo -= 8;
+        valorMaquina.setText(String.format("%.2f", saldo));
+        btnChoco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_choco_amarelo-8.png")));
+        JOptionPane.showMessageDialog(this, "Choco Comprado com sucesso!", "Status: OK", JOptionPane.INFORMATION_MESSAGE); 
+
+        new Thread(() -> {
+            try {
+                Thread.sleep(200); 
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            atualizarBotoes(); 
+        }).start();
+    } else {
+        JOptionPane.showMessageDialog(this, "Saldo insuficiente!", "Aviso", JOptionPane.WARNING_MESSAGE);
+    }
+
+
+    }//GEN-LAST:event_btnChocoActionPerformed
 
     /**
      * @param args the command line arguments
