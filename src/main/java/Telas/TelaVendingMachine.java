@@ -2,6 +2,11 @@
 package Telas;
 
 import javax.swing.JOptionPane;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.Graphics;
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
 
 
 public class TelaVendingMachine extends javax.swing.JFrame {
@@ -13,7 +18,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         private int QtdChoco = 3;
         private String ProdEscolhido;
         private boolean produtoEscolhido = false;
-        
+        private javax.swing.ImageIcon imagem;
         
         
         
@@ -79,12 +84,19 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         Candy3 = new javax.swing.JLabel();
         Candy2 = new javax.swing.JLabel();
         DoceEscolhido = new javax.swing.JLabel();
+        FundoMaquinaAberta = new javax.swing.JLabel();
         FundoMaquina = new javax.swing.JLabel();
         Carteira = new javax.swing.JLabel();
         btnMoeda1 = new javax.swing.JButton();
         btnNota2 = new javax.swing.JButton();
         btnNota5 = new javax.swing.JButton();
         Background = new javax.swing.JLabel();
+        ProdutoEscolhido = new java.awt.Panel();
+        valorTrocoEscolhido = new javax.swing.JLabel();
+        BotaoEscolhidoLabel = new javax.swing.JButton();
+        textHelp4 = new javax.swing.JLabel();
+        DoceEscolhidoPanel = new javax.swing.JLabel();
+        FundoEscolhido = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Vending Machine");
@@ -191,6 +203,9 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         getContentPane().add(Candy2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 270, 110, 120));
         getContentPane().add(DoceEscolhido, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 630, 120, 100));
 
+        FundoMaquinaAberta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/fundo_roxo_tampa-8.png"))); // NOI18N
+        getContentPane().add(FundoMaquinaAberta, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 630, 470, 110));
+
         FundoMaquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/fundo_roxo_maquina-8.png"))); // NOI18N
         getContentPane().add(FundoMaquina, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 390, 560));
 
@@ -252,6 +267,38 @@ public class TelaVendingMachine extends javax.swing.JFrame {
 
         Background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/BackgroundVendingMachine.png"))); // NOI18N
         getContentPane().add(Background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        ProdutoEscolhido.setPreferredSize(new java.awt.Dimension(830, 560));
+        ProdutoEscolhido.setVisible(false);
+        ProdutoEscolhido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        valorTrocoEscolhido.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
+        valorTrocoEscolhido.setForeground(new java.awt.Color(255, 255, 255));
+        valorTrocoEscolhido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        valorTrocoEscolhido.setText("00,00");
+        ProdutoEscolhido.add(valorTrocoEscolhido, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 260, 110, 30));
+
+        BotaoEscolhidoLabel.setText("Voltar para maquina de doces");
+        BotaoEscolhidoLabel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoEscolhidoLabelActionPerformed(evt);
+            }
+        });
+        ProdutoEscolhido.add(BotaoEscolhidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 563, 350, 50));
+
+        textHelp4.setBackground(new java.awt.Color(255, 255, 255));
+        textHelp4.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        textHelp4.setForeground(new java.awt.Color(255, 255, 255));
+        textHelp4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        textHelp4.setText("Doce escolhido e troco:");
+        textHelp4.setToolTipText("");
+        ProdutoEscolhido.add(textHelp4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 510, 60));
+        ProdutoEscolhido.add(DoceEscolhidoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 370, 330));
+
+        FundoEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/BackgroundVendingMachine.png"))); // NOI18N
+        ProdutoEscolhido.add(FundoEscolhido, new org.netbeans.lib.awtextra.AbsoluteConstraints(-13, -4, 1000, 640));
+
+        getContentPane().add(ProdutoEscolhido, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 980, 630));
 
         pack();
         setLocationRelativeTo(null);
@@ -474,59 +521,90 @@ public class TelaVendingMachine extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnChocoActionPerformed
 
-    private void btnPegarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPegarActionPerformed
+    private void BotaoEscolhidoLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoEscolhidoLabelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotaoEscolhidoLabelActionPerformed
+
+    private void btnPegarActionPerformed(java.awt.event.ActionEvent evt) {
         String mensagem;
         DoceEscolhido.setVisible(false);
         btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png"))); 
-
-    if (ProdEscolhido.equals("Donut")) {
-        mensagem = "Você pegou: Donut";
-    } else if (ProdEscolhido.equals("Candy")) {
-        mensagem = "Você pegou: Candy";
-    } else if (ProdEscolhido.equals("Choco")) {
-        mensagem = "Você pegou: Choco";
-    } else {
-        JOptionPane.showMessageDialog(this, "Nenhum produto foi selecionado.", "Aviso", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
-
+    
+        if (ProdEscolhido.equals("Donut")) {
+            mensagem = "Você pegou: Donut";
+            imagem = new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_donut_1-8.png"));
+        } else if (ProdEscolhido.equals("Candy")) {
+            mensagem = "Você pegou: Candy";
+            imagem = new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_1-8.png"));
+        } else if (ProdEscolhido.equals("Choco")) {
+            mensagem = "Você pegou: Choco";
+            imagem = new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_choco_1-8.png"));
+        } else {
+            JOptionPane.showMessageDialog(this, "Nenhum produto foi selecionado.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+    
         double troco = saldo;
-        saldo = 0.0; 
+        saldo = 0.0;
         valorMaquina.setText(String.format("%.2f", saldo));
-
+    
         mensagem += "\nTroco devolvido: R$ " + String.format("%.2f", troco);
-        JOptionPane.showMessageDialog(this, mensagem, "Produto Retirado", JOptionPane.INFORMATION_MESSAGE);
+    
+        // Cria um JLabel com a imagem e o texto
+        JLabel label = new JLabel(mensagem, imagem, JLabel.CENTER);
+        label.setHorizontalTextPosition(JLabel.CENTER);
+        label.setVerticalTextPosition(JLabel.BOTTOM);
+    
+        // Cria um JPanel com plano de fundo personalizado
+        JPanel panel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                // Adiciona uma cor ou imagem de fundo
+                g.drawImage(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/BackgroundVendingMachine.png")).getImage(), 0, 0, getWidth(), getHeight(), this);
+            }
+        };
+        panel.setLayout(new BorderLayout());
+        panel.add(label, BorderLayout.CENTER);
+    
+        // Cria um JFrame para exibir o painel
+        JFrame frame = new JFrame("Produto Retirado");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(400, 300); // Define o tamanho do frame
+        frame.setLocationRelativeTo(this); // Centraliza o frame em relação à janela principal
+        frame.add(panel); // Adiciona o painel ao frame
+        frame.setVisible(true); // Torna o frame visível
+    
         Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_fechado-8.png")));
-        
         btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_tradicional-8.png")));
-        
+    
         produtoEscolhido = false;
         btnDonut.setEnabled(true);
         btnCandy.setEnabled(true);
         btnChoco.setEnabled(true);
         btnPegar.setEnabled(false);
-
-    if (QtdDonut == 0 && QtdCandy == 0 && QtdChoco == 0){
-        JOptionPane.showMessageDialog(this, "Maquina vazia", "Repondo estoque", JOptionPane.INFORMATION_MESSAGE);
-        
-        QtdDonut = 3;
-        QtdCandy = 4;
-        QtdChoco = 3;
-        
-        Donut1.setVisible(true);
-        Donut2.setVisible(true);
-        Donut3.setVisible(true);
-        Candy1.setVisible(true);
-        Candy2.setVisible(true);
-        Candy3.setVisible(true);
-        Candy4.setVisible(true);
-        Choco1.setVisible(true);
-        Choco2.setVisible(true);
-        Choco3.setVisible(true);
+    
+        if (QtdDonut == 0 && QtdCandy == 0 && QtdChoco == 0) {
+            JOptionPane.showMessageDialog(this, "Maquina vazia", "Repondo estoque", JOptionPane.INFORMATION_MESSAGE);
+    
+            QtdDonut = 3;
+            QtdCandy = 4;
+            QtdChoco = 3;
+    
+            Donut1.setVisible(true);
+            Donut2.setVisible(true);
+            Donut3.setVisible(true);
+            Candy1.setVisible(true);
+            Candy2.setVisible(true);
+            Candy3.setVisible(true);
+            Candy4.setVisible(true);
+            Choco1.setVisible(true);
+            Choco2.setVisible(true);
+            Choco3.setVisible(true);
 
     }
     
-    }//GEN-LAST:event_btnPegarActionPerformed
+    }                                        
 
     /**
      * @param args the command line arguments
@@ -565,6 +643,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Background;
+    private javax.swing.JButton BotaoEscolhidoLabel;
     private javax.swing.JLabel Candy1;
     private javax.swing.JLabel Candy2;
     private javax.swing.JLabel Candy3;
@@ -574,11 +653,15 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     private javax.swing.JLabel Choco2;
     private javax.swing.JLabel Choco3;
     private javax.swing.JLabel DoceEscolhido;
+    private javax.swing.JLabel DoceEscolhidoPanel;
     private javax.swing.JLabel Donut1;
     private javax.swing.JLabel Donut2;
     private javax.swing.JLabel Donut3;
+    private javax.swing.JLabel FundoEscolhido;
     private javax.swing.JLabel FundoMaquina;
+    private javax.swing.JLabel FundoMaquinaAberta;
     private javax.swing.JLabel Maquina;
+    private java.awt.Panel ProdutoEscolhido;
     private javax.swing.JButton btnCandy;
     private javax.swing.JButton btnChoco;
     private javax.swing.JButton btnDonut;
@@ -589,6 +672,8 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     private javax.swing.JLabel textHelp;
     private javax.swing.JLabel textHelp1;
     private javax.swing.JLabel textHelp2;
+    private javax.swing.JLabel textHelp4;
     private javax.swing.JLabel valorMaquina;
+    private javax.swing.JLabel valorTrocoEscolhido;
     // End of variables declaration//GEN-END:variables
 }
