@@ -65,9 +65,13 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     private void initComponents() {
 
         ProdutoEscolhido = new java.awt.Panel();
+        troco1 = new javax.swing.JButton();
+        troco2 = new javax.swing.JButton();
+        troco3 = new javax.swing.JButton();
+        troco4 = new javax.swing.JButton();
         valorTrocoEscolhido = new javax.swing.JLabel();
         BotaoEscolhidoLabel = new javax.swing.JButton();
-        TextoPanel = new javax.swing.JLabel();
+        textHelp4 = new javax.swing.JLabel();
         DoceEscolhidoPanel = new javax.swing.JLabel();
         FundoEscolhido = new javax.swing.JLabel();
         Choco1 = new javax.swing.JLabel();
@@ -106,11 +110,23 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         ProdutoEscolhido.setVisible(false);
         ProdutoEscolhido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        valorTrocoEscolhido.setFont(new java.awt.Font("OCR A Extended", 1, 18)); // NOI18N
+        troco1.setContentAreaFilled(false);
+        ProdutoEscolhido.add(troco1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 110, 210, 380));
+
+        troco2.setContentAreaFilled(false);
+        ProdutoEscolhido.add(troco2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 110, 230, 380));
+
+        troco3.setContentAreaFilled(false);
+        ProdutoEscolhido.add(troco3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 200, 220, 390));
+
+        troco4.setContentAreaFilled(false);
+        ProdutoEscolhido.add(troco4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 200, 190, 390));
+
+        valorTrocoEscolhido.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
         valorTrocoEscolhido.setForeground(new java.awt.Color(255, 255, 255));
         valorTrocoEscolhido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         valorTrocoEscolhido.setText("00,00");
-        ProdutoEscolhido.add(valorTrocoEscolhido, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 260, 110, 30));
+        ProdutoEscolhido.add(valorTrocoEscolhido, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 180, 60));
 
         BotaoEscolhidoLabel.setText("Voltar para maquina de doces");
         BotaoEscolhidoLabel.addActionListener(new java.awt.event.ActionListener() {
@@ -120,13 +136,13 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         });
         ProdutoEscolhido.add(BotaoEscolhidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 563, 350, 50));
 
-        TextoPanel.setBackground(new java.awt.Color(255, 255, 255));
-        TextoPanel.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
-        TextoPanel.setForeground(new java.awt.Color(255, 255, 255));
-        TextoPanel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        TextoPanel.setText("Doce escolhido e troco:");
-        TextoPanel.setToolTipText("");
-        ProdutoEscolhido.add(TextoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 510, 60));
+        textHelp4.setBackground(new java.awt.Color(255, 255, 255));
+        textHelp4.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        textHelp4.setForeground(new java.awt.Color(255, 255, 255));
+        textHelp4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        textHelp4.setText("Doce escolhido e troco de: R$:");
+        textHelp4.setToolTipText("");
+        ProdutoEscolhido.add(textHelp4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 630, 60));
         ProdutoEscolhido.add(DoceEscolhidoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 370, 330));
 
         FundoEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/BackgroundVendingMachine.png"))); // NOI18N
@@ -528,18 +544,42 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     
         // Torna visíveis apenas os componentes específicos do painel ProdutoEscolhido
         valorTrocoEscolhido.setVisible(true);
-        TextoPanel.setVisible(true);
         DoceEscolhidoPanel.setVisible(true);
         FundoEscolhido.setVisible(true);
     
         // Torna o painel ProdutoEscolhido invisível
         ProdutoEscolhido.setVisible(false);
-    }//GEN-LAST:event_BotaoEscolhidoLabelActionPerformed
+    }
+
+        private void atualizarTrocoVisual(double troco) {
+            // Reseta os ícones dos labels de troco
+            troco1.setIcon(null);
+            troco2.setIcon(null);
+            troco3.setIcon(null);
+            troco4.setIcon(null);
+        
+            // Define os valores das notas e moedas disponíveis
+            int[] valores = {5, 2, 1}; // Notas e moedas disponíveis
+            String[] imagens = {"/ImagensVendingMachine/5reais.jpg", 
+                                "/ImagensVendingMachine/2reais.jpg", 
+                                "/ImagensVendingMachine/1real.png"}; // Caminhos das imagens
+            javax.swing.JButton[] trocoLabels = {troco1, troco2, troco3, troco4}; // Labels de troco
+        
+            int index = 0; // Índice para os labels de troco
+            for (int i = 0; i < valores.length; i++) {
+                while (troco >= valores[i] && index < trocoLabels.length) {
+                    // Atualiza o ícone do label correspondente
+                    trocoLabels[index].setIcon(new javax.swing.ImageIcon(getClass().getResource(imagens[i])));
+                    troco -= valores[i];
+                    index++;
+                }
+            }
+        }
 
     private void btnPegarActionPerformed(java.awt.event.ActionEvent evt) {
         String mensagem;
         DoceEscolhido.setVisible(false);
-        btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png"))); 
+        btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));
     
         if (ProdEscolhido.equals("Donut")) {
             mensagem = "Você pegou: Donut";
@@ -556,6 +596,8 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         }
     
         double troco = saldo;
+
+        atualizarTrocoVisual(troco);
         saldo = 0.0;
         valorMaquina.setText(String.format("%.2f", saldo));
     
@@ -582,7 +624,6 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         // Atualiza o estado do panel
         valorTrocoEscolhido.setVisible(true);
         BotaoEscolhidoLabel.setVisible(true);
-        TextoPanel.setVisible(true);
         FundoEscolhido.setVisible(true);
         DoceEscolhidoPanel.setVisible(true);
 
@@ -675,7 +716,11 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     private javax.swing.JLabel textHelp;
     private javax.swing.JLabel textHelp1;
     private javax.swing.JLabel textHelp2;
-    private javax.swing.JLabel TextoPanel;
+    private javax.swing.JLabel textHelp4;
+    private javax.swing.JButton troco1;
+    private javax.swing.JButton troco2;
+    private javax.swing.JButton troco3;
+    private javax.swing.JButton troco4;
     private javax.swing.JLabel valorMaquina;
     private javax.swing.JLabel valorTrocoEscolhido;
     // End of variables declaration//GEN-END:variables
