@@ -16,22 +16,31 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         private int QtdDonut = 3;
         private int QtdCandy = 4;
         private int QtdChoco = 3;
+        private double precoDonut = 6.00;
+        private double precoCandy = 7.00;
+        private double precoChoco = 8.00;
         private String ProdEscolhido;
         private boolean produtoEscolhido = false;
         private javax.swing.ImageIcon imagem;
-        
-        
         
     public TelaVendingMachine() {
         initComponents();
         btnPegar.setEnabled(false);
         btnPegar.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_tradicional-8.png")));
-       
-
+        precoDonut1.setText(String.format("%.2f", precoDonut));
+        precoDonut2.setText(String.format("%.2f", precoDonut));
+        precoDonut3.setText(String.format("%.2f", precoDonut));
+        precoCandy1.setText(String.format("%.2f", precoCandy));
+        precoCandy2.setText(String.format("%.2f", precoCandy));
+        precoCandy3.setText(String.format("%.2f", precoCandy));
+        precoCandy4.setText(String.format("%.2f", precoCandy));
+        precoChoco1.setText(String.format("%.2f", precoChoco));
+        precoChoco2.setText(String.format("%.2f", precoChoco));
+        precoChoco3.setText(String.format("%.2f", precoChoco));
     }
     
     private void atualizarBotoes() {
-        if (saldo >= 6.00 && QtdDonut != 0) {  
+        if (saldo >= precoDonut && QtdDonut != 0) {  
             btnDonut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_donut_tradicional-8.png")));
             btnDonut.setEnabled(true);
             btnDonut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -42,7 +51,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
             btnDonut.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
          
         }
-        if(saldo >= 7.00 && QtdCandy != 0){
+        if(saldo >= precoCandy && QtdCandy != 0){
             btnCandy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_candy_tradicional-8.png")));
             btnCandy.setEnabled(true);
             btnCandy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -52,7 +61,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
             btnCandy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_candy_escuro-8.png")));
             btnCandy.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         }
-        if(saldo >= 8.00 && QtdChoco != 0){
+        if(saldo >= precoChoco && QtdChoco != 0){
             btnChoco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_choco_tradicional-8.png")));
             btnChoco.setEnabled(true);
             btnChoco.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -89,6 +98,16 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         textHelp1 = new javax.swing.JLabel();
         textHelp2 = new javax.swing.JLabel();
         valorMaquina = new javax.swing.JLabel();
+        precoChoco3 = new javax.swing.JLabel();
+        precoChoco2 = new javax.swing.JLabel();
+        precoChoco1 = new javax.swing.JLabel();
+        precoCandy4 = new javax.swing.JLabel();
+        precoCandy3 = new javax.swing.JLabel();
+        precoCandy2 = new javax.swing.JLabel();
+        precoCandy1 = new javax.swing.JLabel();
+        precoDonut3 = new javax.swing.JLabel();
+        precoDonut2 = new javax.swing.JLabel();
+        precoDonut1 = new javax.swing.JLabel();
         Maquina = new javax.swing.JLabel();
         Donut3 = new javax.swing.JLabel();
         Donut2 = new javax.swing.JLabel();
@@ -237,6 +256,76 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         valorMaquina.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         valorMaquina.setText("00,00");
         getContentPane().add(valorMaquina, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 500, 70, 20));
+
+        precoChoco3.setBackground(new java.awt.Color(25, 25, 69));
+        precoChoco3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        precoChoco3.setForeground(new java.awt.Color(255, 255, 255));
+        precoChoco3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        precoChoco3.setOpaque(true);
+        getContentPane().add(precoChoco3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 524, 50, 20));
+
+        precoChoco2.setBackground(new java.awt.Color(25, 25, 69));
+        precoChoco2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        precoChoco2.setForeground(new java.awt.Color(255, 255, 255));
+        precoChoco2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        precoChoco2.setOpaque(true);
+        getContentPane().add(precoChoco2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 524, 50, 20));
+
+        precoChoco1.setBackground(new java.awt.Color(25, 25, 69));
+        precoChoco1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        precoChoco1.setForeground(new java.awt.Color(255, 255, 255));
+        precoChoco1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        precoChoco1.setOpaque(true);
+        getContentPane().add(precoChoco1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 524, 50, 20));
+
+        precoCandy4.setBackground(new java.awt.Color(25, 25, 69));
+        precoCandy4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        precoCandy4.setForeground(new java.awt.Color(255, 255, 255));
+        precoCandy4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        precoCandy4.setOpaque(true);
+        getContentPane().add(precoCandy4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 378, 50, 20));
+
+        precoCandy3.setBackground(new java.awt.Color(25, 25, 69));
+        precoCandy3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        precoCandy3.setForeground(new java.awt.Color(255, 255, 255));
+        precoCandy3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        precoCandy3.setOpaque(true);
+        getContentPane().add(precoCandy3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1004, 379, 50, 20));
+
+        precoCandy2.setBackground(new java.awt.Color(25, 25, 69));
+        precoCandy2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        precoCandy2.setForeground(new java.awt.Color(255, 255, 255));
+        precoCandy2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        precoCandy2.setOpaque(true);
+        getContentPane().add(precoCandy2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 381, 50, 20));
+
+        precoCandy1.setBackground(new java.awt.Color(25, 25, 69));
+        precoCandy1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        precoCandy1.setForeground(new java.awt.Color(255, 255, 255));
+        precoCandy1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        precoCandy1.setOpaque(true);
+        getContentPane().add(precoCandy1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 382, 50, 20));
+
+        precoDonut3.setBackground(new java.awt.Color(25, 25, 69));
+        precoDonut3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        precoDonut3.setForeground(new java.awt.Color(255, 255, 255));
+        precoDonut3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        precoDonut3.setOpaque(true);
+        getContentPane().add(precoDonut3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1080, 209, 50, 20));
+
+        precoDonut2.setBackground(new java.awt.Color(25, 25, 69));
+        precoDonut2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        precoDonut2.setForeground(new java.awt.Color(255, 255, 255));
+        precoDonut2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        precoDonut2.setOpaque(true);
+        getContentPane().add(precoDonut2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 211, 50, 20));
+
+        precoDonut1.setBackground(new java.awt.Color(25, 25, 69));
+        precoDonut1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        precoDonut1.setForeground(new java.awt.Color(255, 255, 255));
+        precoDonut1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        precoDonut1.setOpaque(true);
+        getContentPane().add(precoDonut1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 212, 50, 20));
 
         Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_fechado-8.png"))); // NOI18N
         Maquina.setPreferredSize(new java.awt.Dimension(550, 780));
@@ -404,8 +493,8 @@ public class TelaVendingMachine extends javax.swing.JFrame {
             return;
         }
 
-        if (saldo >= 6.00) {
-            saldo -= 6;
+        if (saldo >= precoDonut) {
+            saldo -= precoDonut;
             valorMaquina.setText(String.format("%.2f", saldo));
             DoceEscolhido.setVisible(true);
             btnDonut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -464,8 +553,8 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         return;
     }
 
-    if (saldo >= 7.00) {
-        saldo -= 7;
+    if (saldo >= precoCandy) {
+        saldo -= precoCandy;
         valorMaquina.setText(String.format("%.2f", saldo));
         DoceEscolhido.setVisible(true);
         btnCandy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_candy_amarelo-8.png")));
@@ -530,8 +619,8 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         return;
     }
 
-    if (saldo >= 8.00) {
-        saldo -= 8;
+    if (saldo >= precoChoco) {
+        saldo -= precoChoco;
         valorMaquina.setText(String.format("%.2f", saldo));
         DoceEscolhido.setVisible(true);
         btnChoco.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -758,6 +847,16 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     private javax.swing.JButton btnNota2;
     private javax.swing.JButton btnNota5;
     private javax.swing.JButton btnPegar;
+    private javax.swing.JLabel precoCandy1;
+    private javax.swing.JLabel precoCandy2;
+    private javax.swing.JLabel precoCandy3;
+    private javax.swing.JLabel precoCandy4;
+    private javax.swing.JLabel precoChoco1;
+    private javax.swing.JLabel precoChoco2;
+    private javax.swing.JLabel precoChoco3;
+    private javax.swing.JLabel precoDonut1;
+    private javax.swing.JLabel precoDonut2;
+    private javax.swing.JLabel precoDonut3;
     private javax.swing.JLabel textHelp;
     private javax.swing.JLabel textHelp1;
     private javax.swing.JLabel textHelp2;
