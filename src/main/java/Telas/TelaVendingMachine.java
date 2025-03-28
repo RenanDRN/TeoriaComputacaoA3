@@ -34,27 +34,33 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         if (saldo >= 6.00 && QtdDonut != 0) {  
             btnDonut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_donut_tradicional-8.png")));
             btnDonut.setEnabled(true);
+            btnDonut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         } else {
             btnDonut.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_donut_escuro-8.png")));
             btnDonut.setEnabled(false);
             btnDonut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_donut_escuro-8.png")));
+            btnDonut.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
          
         }
         if(saldo >= 7.00 && QtdCandy != 0){
             btnCandy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_candy_tradicional-8.png")));
             btnCandy.setEnabled(true);
+            btnCandy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         }else{
             btnCandy.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_candy_escuro-8.png")));
             btnCandy.setEnabled(false);
             btnCandy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_candy_escuro-8.png")));
+            btnCandy.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         }
         if(saldo >= 8.00 && QtdChoco != 0){
             btnChoco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_choco_tradicional-8.png")));
             btnChoco.setEnabled(true);
+            btnChoco.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         }else{
             btnChoco.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_choco_escuro-8.png")));
             btnChoco.setEnabled(false);
             btnChoco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_choco_escuro-8.png")));
+            btnChoco.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         }
 
@@ -65,18 +71,15 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     private void initComponents() {
 
         ProdutoEscolhido = new java.awt.Panel();
-        troco1 = new javax.swing.JButton();
-        troco2 = new javax.swing.JButton();
-        troco3 = new javax.swing.JButton();
-        troco4 = new javax.swing.JButton();
+        troco1 = new javax.swing.JLabel();
+        troco2 = new javax.swing.JLabel();
+        troco3 = new javax.swing.JLabel();
+        troco4 = new javax.swing.JLabel();
         valorTrocoEscolhido = new javax.swing.JLabel();
         BotaoEscolhidoLabel = new javax.swing.JButton();
         textHelp4 = new javax.swing.JLabel();
+        textHelp5 = new javax.swing.JLabel();
         DoceEscolhidoPanel = new javax.swing.JLabel();
-        FundoEscolhido = new javax.swing.JLabel();
-        Choco1 = new javax.swing.JLabel();
-        Choco2 = new javax.swing.JLabel();
-        Choco3 = new javax.swing.JLabel();
         btnCandy = new javax.swing.JButton();
         btnChoco = new javax.swing.JButton();
         btnDonut = new javax.swing.JButton();
@@ -93,6 +96,9 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         Candy4 = new javax.swing.JLabel();
         Candy3 = new javax.swing.JLabel();
         Candy2 = new javax.swing.JLabel();
+        Choco1 = new javax.swing.JLabel();
+        Choco2 = new javax.swing.JLabel();
+        Choco3 = new javax.swing.JLabel();
         DoceEscolhido = new javax.swing.JLabel();
         FundoMaquinaAberta = new javax.swing.JLabel();
         FundoMaquina = new javax.swing.JLabel();
@@ -106,58 +112,61 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         setTitle("Vending Machine");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        ProdutoEscolhido.setPreferredSize(new java.awt.Dimension(830, 560));
+        ProdutoEscolhido.setBackground(new java.awt.Color(204, 153, 255));
+        ProdutoEscolhido.setMinimumSize(new java.awt.Dimension(980, 630));
+        ProdutoEscolhido.setPreferredSize(new java.awt.Dimension(980, 630));
         ProdutoEscolhido.setVisible(false);
         ProdutoEscolhido.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        troco1.setContentAreaFilled(false);
-        ProdutoEscolhido.add(troco1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 110, 210, 380));
+        troco1.setPreferredSize(new java.awt.Dimension(210, 380));
+        ProdutoEscolhido.add(troco1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, -1, -1));
 
-        troco2.setContentAreaFilled(false);
-        ProdutoEscolhido.add(troco2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 110, 230, 380));
+        troco2.setPreferredSize(new java.awt.Dimension(210, 380));
+        ProdutoEscolhido.add(troco2, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 120, -1, -1));
 
-        troco3.setContentAreaFilled(false);
-        ProdutoEscolhido.add(troco3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 200, 220, 390));
+        troco3.setPreferredSize(new java.awt.Dimension(210, 380));
+        ProdutoEscolhido.add(troco3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 130, -1, -1));
 
-        troco4.setContentAreaFilled(false);
-        ProdutoEscolhido.add(troco4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 200, 190, 390));
+        troco4.setPreferredSize(new java.awt.Dimension(210, 380));
+        ProdutoEscolhido.add(troco4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 150, -1, -1));
 
         valorTrocoEscolhido.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
-        valorTrocoEscolhido.setForeground(new java.awt.Color(255, 255, 255));
+        valorTrocoEscolhido.setForeground(new java.awt.Color(0, 0, 0));
         valorTrocoEscolhido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         valorTrocoEscolhido.setText("00,00");
-        ProdutoEscolhido.add(valorTrocoEscolhido, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 30, 180, 60));
+        ProdutoEscolhido.add(valorTrocoEscolhido, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, 180, 60));
 
-        BotaoEscolhidoLabel.setText("Voltar para maquina de doces");
+        BotaoEscolhidoLabel.setBackground(new java.awt.Color(102, 0, 153));
+        BotaoEscolhidoLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        BotaoEscolhidoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        BotaoEscolhidoLabel.setText("Voltar para a maquina de doces");
+        BotaoEscolhidoLabel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BotaoEscolhidoLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BotaoEscolhidoLabel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotaoEscolhidoLabelActionPerformed(evt);
             }
         });
-        ProdutoEscolhido.add(BotaoEscolhidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 563, 350, 50));
+        ProdutoEscolhido.add(BotaoEscolhidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 550, 350, 50));
 
         textHelp4.setBackground(new java.awt.Color(255, 255, 255));
         textHelp4.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
-        textHelp4.setForeground(new java.awt.Color(255, 255, 255));
+        textHelp4.setForeground(new java.awt.Color(0, 0, 0));
         textHelp4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        textHelp4.setText("Doce escolhido e troco de: R$:");
+        textHelp4.setText("Doce escolhido");
         textHelp4.setToolTipText("");
-        ProdutoEscolhido.add(textHelp4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 630, 60));
+        ProdutoEscolhido.add(textHelp4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, 290, 60));
+
+        textHelp5.setBackground(new java.awt.Color(255, 255, 255));
+        textHelp5.setFont(new java.awt.Font("Segoe UI Black", 1, 36)); // NOI18N
+        textHelp5.setForeground(new java.awt.Color(0, 0, 0));
+        textHelp5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        textHelp5.setText("Troco:");
+        textHelp5.setToolTipText("");
+        ProdutoEscolhido.add(textHelp5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 200, 60));
         ProdutoEscolhido.add(DoceEscolhidoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 370, 330));
 
-        FundoEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/BackgroundVendingMachine.png"))); // NOI18N
-        ProdutoEscolhido.add(FundoEscolhido, new org.netbeans.lib.awtextra.AbsoluteConstraints(-13, -4, 1000, 640));
-
-        getContentPane().add(ProdutoEscolhido, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 980, 630));
-
-        Choco1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_choco_3-8.png"))); // NOI18N
-        getContentPane().add(Choco1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 410, 110, 120));
-
-        Choco2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_choco_1-8.png"))); // NOI18N
-        getContentPane().add(Choco2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 410, 110, 120));
-
-        Choco3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_choco_2-8.png"))); // NOI18N
-        getContentPane().add(Choco3, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 410, 110, 120));
+        getContentPane().add(ProdutoEscolhido, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, -1));
 
         btnCandy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_candy_escuro-8.png"))); // NOI18N
         btnCandy.setContentAreaFilled(false);
@@ -249,6 +258,15 @@ public class TelaVendingMachine extends javax.swing.JFrame {
 
         Candy2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_2_escuro-8.png"))); // NOI18N
         getContentPane().add(Candy2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 270, 110, 120));
+
+        Choco1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_choco_3-8.png"))); // NOI18N
+        getContentPane().add(Choco1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 410, 110, 120));
+
+        Choco2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_choco_1-8.png"))); // NOI18N
+        getContentPane().add(Choco2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 410, 110, 120));
+
+        Choco3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_choco_2-8.png"))); // NOI18N
+        getContentPane().add(Choco3, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 410, 110, 120));
         getContentPane().add(DoceEscolhido, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 630, 120, 100));
 
         FundoMaquinaAberta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/fundo_roxo_tampa-8.png"))); // NOI18N
@@ -386,6 +404,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
             saldo -= 6;
             valorMaquina.setText(String.format("%.2f", saldo));
             DoceEscolhido.setVisible(true);
+            btnDonut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
             btnDonut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_donut_amarelo-8.png")));
             ProdEscolhido = "Donut";
             produtoEscolhido = true; 
@@ -411,19 +430,26 @@ public class TelaVendingMachine extends javax.swing.JFrame {
                 Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
                 Donut1.setVisible(false);
                 DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_donut_2-8.png")));  
+                btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
             }else if(QtdDonut == 2) {
                 --QtdDonut;
                 Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
                 Donut2.setVisible(false);
                 DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_donut_2_escuro-8.png")));  
+                btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
             }else {
                 --QtdDonut;
                 Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
                 Donut3.setVisible(false);
                 DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_donut_3-8.png"))); 
+                btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
                 }
         }else{
             JOptionPane.showMessageDialog(this, "Saldo insuficiente!", "Aviso", JOptionPane.WARNING_MESSAGE);
+            btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         }
     }//GEN-LAST:event_btnDonutActionPerformed
 
@@ -462,25 +488,34 @@ public class TelaVendingMachine extends javax.swing.JFrame {
             --QtdCandy;
             Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
             Candy1.setVisible(false);
-            DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_1-8.png")));  
+            DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_1-8.png")));
+            btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
         } else if (QtdCandy == 3) {
             --QtdCandy;
             Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
             Candy2.setVisible(false);
             DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_4-8.png")));
+            btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
         } else if (QtdCandy == 2) {
             --QtdCandy;
             Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
             Candy3.setVisible(false);
-            DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_3-8.png"))); 
+            DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_3-8.png")));
+            btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
         } else {
             --QtdCandy;
             Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
             Candy4.setVisible(false);
-            DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_2-8.png"))); 
+            DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_2-8.png")));
+            btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
         }
     } else {
         JOptionPane.showMessageDialog(this, "Saldo insuficiente!", "Aviso", JOptionPane.WARNING_MESSAGE);
+        btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
     }
     }//GEN-LAST:event_btnCandyActionPerformed
 
@@ -495,6 +530,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         saldo -= 8;
         valorMaquina.setText(String.format("%.2f", saldo));
         DoceEscolhido.setVisible(true);
+        btnChoco.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnChoco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_choco_amarelo-8.png")));
         ProdEscolhido = "Choco";
         produtoEscolhido = true; 
@@ -520,19 +556,26 @@ public class TelaVendingMachine extends javax.swing.JFrame {
             Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
             Choco1.setVisible(false);
             DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_choco_1-8.png")));  
+            btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
         } else if (QtdChoco == 2) {
             --QtdChoco;
             Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
             Choco2.setVisible(false);
             DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_choco_2-8.png")));  
+            btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
         } else {
             --QtdChoco;
             Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
             Choco3.setVisible(false);
             DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_choco_3-8.png"))); 
+            btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
         }
     } else {
         JOptionPane.showMessageDialog(this, "Saldo insuficiente!", "Aviso", JOptionPane.WARNING_MESSAGE);
+        btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
     }
 
     }//GEN-LAST:event_btnChocoActionPerformed
@@ -545,7 +588,6 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         // Torna visíveis apenas os componentes específicos do painel ProdutoEscolhido
         valorTrocoEscolhido.setVisible(true);
         DoceEscolhidoPanel.setVisible(true);
-        FundoEscolhido.setVisible(true);
     
         // Torna o painel ProdutoEscolhido invisível
         ProdutoEscolhido.setVisible(false);
@@ -563,7 +605,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
             String[] imagens = {"/ImagensVendingMachine/5reais.jpg", 
                                 "/ImagensVendingMachine/2reais.jpg", 
                                 "/ImagensVendingMachine/1real.png"}; // Caminhos das imagens
-            javax.swing.JButton[] trocoLabels = {troco1, troco2, troco3, troco4}; // Labels de troco
+            javax.swing.JLabel[] trocoLabels = {troco1, troco2, troco3, troco4}; // Labels de troco
         
             int index = 0; // Índice para os labels de troco
             for (int i = 0; i < valores.length; i++) {
@@ -624,7 +666,6 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         // Atualiza o estado do panel
         valorTrocoEscolhido.setVisible(true);
         BotaoEscolhidoLabel.setVisible(true);
-        FundoEscolhido.setVisible(true);
         DoceEscolhidoPanel.setVisible(true);
 
     
@@ -701,7 +742,6 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     private javax.swing.JLabel Donut1;
     private javax.swing.JLabel Donut2;
     private javax.swing.JLabel Donut3;
-    private javax.swing.JLabel FundoEscolhido;
     private javax.swing.JLabel FundoMaquina;
     private javax.swing.JLabel FundoMaquinaAberta;
     private javax.swing.JLabel Maquina;
@@ -717,10 +757,11 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     private javax.swing.JLabel textHelp1;
     private javax.swing.JLabel textHelp2;
     private javax.swing.JLabel textHelp4;
-    private javax.swing.JButton troco1;
-    private javax.swing.JButton troco2;
-    private javax.swing.JButton troco3;
-    private javax.swing.JButton troco4;
+    private javax.swing.JLabel textHelp5;
+    private javax.swing.JLabel troco1;
+    private javax.swing.JLabel troco2;
+    private javax.swing.JLabel troco3;
+    private javax.swing.JLabel troco4;
     private javax.swing.JLabel valorMaquina;
     private javax.swing.JLabel valorTrocoEscolhido;
     // End of variables declaration//GEN-END:variables
