@@ -5,7 +5,7 @@ Este projeto propõe a modelagem de uma máquina de doces, cujo funcionamento se
 ## Integrantes
 
 - [@Lucas Cesar Parra - 822166659](https://www.github.com/Caslu-Parra)
-- [@Geovane Ribeiro - 823129976](https://github.com/geovanefern467)
+- [@Geovane Ribeiro - 825145601](https://github.com/geovanefern467)
 - [@Milena Porto Coyado - 822160378](https://www.github.com/mictalks)
 - [@Rafael de Macedo Barbosa - 821141019](https://www.github.com/RafaelMB20)
 - [@Renan dos Reis Negrão - 822148468](https://www.github.com/RenanDRN)
