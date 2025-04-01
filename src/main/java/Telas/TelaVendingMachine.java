@@ -1,28 +1,24 @@
-
 package Telas;
 
 import javax.swing.JOptionPane;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import java.awt.Graphics;
-import java.awt.BorderLayout;
-import javax.swing.JFrame;
-
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
 
 public class TelaVendingMachine extends javax.swing.JFrame {
 
-        private double saldo = 0.0; 
-        private final double limite = 99.00; 
-        private int QtdDonut = 3;
-        private int QtdCandy = 4;
-        private int QtdChoco = 3;
-        private double precoDonut = 6.00;
-        private double precoCandy = 7.00;
-        private double precoChoco = 8.00;
-        private String ProdEscolhido;
-        private boolean produtoEscolhido = false;
-        private javax.swing.ImageIcon imagem;
-        
+    private double saldo = 0.0;
+    private final double limite = 99.00;
+    private int QtdDonut = 3;
+    private int QtdCandy = 4;
+    private int QtdChoco = 3;
+    private double precoDonut = 6.00;
+    private double precoCandy = 7.00;
+    private double precoChoco = 8.00;
+    private String ProdEscolhido;
+    private boolean produtoEscolhido = false;
+    private javax.swing.ImageIcon imagem;
+
     public TelaVendingMachine() {
         initComponents();
         btnPegar.setEnabled(false);
@@ -38,9 +34,9 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         precoChoco2.setText(String.format("%.2f", precoChoco));
         precoChoco3.setText(String.format("%.2f", precoChoco));
     }
-    
+
     private void atualizarBotoes() {
-        if (saldo >= precoDonut && QtdDonut != 0) {  
+        if (saldo >= precoDonut && QtdDonut != 0) {
             btnDonut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_donut_tradicional-8.png")));
             btnDonut.setEnabled(true);
             btnDonut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -49,23 +45,23 @@ public class TelaVendingMachine extends javax.swing.JFrame {
             btnDonut.setEnabled(false);
             btnDonut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_donut_escuro-8.png")));
             btnDonut.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-         
+
         }
-        if(saldo >= precoCandy && QtdCandy != 0){
+        if (saldo >= precoCandy && QtdCandy != 0) {
             btnCandy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_candy_tradicional-8.png")));
             btnCandy.setEnabled(true);
             btnCandy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        }else{
+        } else {
             btnCandy.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_candy_escuro-8.png")));
             btnCandy.setEnabled(false);
             btnCandy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_candy_escuro-8.png")));
             btnCandy.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         }
-        if(saldo >= precoChoco && QtdChoco != 0){
+        if (saldo >= precoChoco && QtdChoco != 0) {
             btnChoco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_choco_tradicional-8.png")));
             btnChoco.setEnabled(true);
             btnChoco.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        }else{
+        } else {
             btnChoco.setDisabledIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_choco_escuro-8.png")));
             btnChoco.setEnabled(false);
             btnChoco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_choco_escuro-8.png")));
@@ -73,8 +69,8 @@ public class TelaVendingMachine extends javax.swing.JFrame {
 
         }
 
-        }
-    
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -433,31 +429,64 @@ public class TelaVendingMachine extends javax.swing.JFrame {
 
     private void btnNota5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNota5ActionPerformed
         if (saldo + 5.00 <= limite) {
-            saldo += 5.00; 
+            try {
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(TelaVendingMachine.class.getResourceAsStream("/AudiosVendingMachine/SomDinheiro.wav"));
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioStream);
+                clip.start();
+
+                // Aguarda até a reprodução terminar
+                Thread.sleep(clip.getMicrosecondLength() / 1000);
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException e) {
+                e.printStackTrace();
+            }
+            saldo += 5.00;
             valorMaquina.setText(String.format("%.2f", saldo));
             atualizarBotoes();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Limite da máquina atingido!", "Aviso", JOptionPane.WARNING_MESSAGE);
-       }
+        }
     }//GEN-LAST:event_btnNota5ActionPerformed
 
     private void btnNota2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNota2ActionPerformed
         if (saldo + 2.00 <= limite) {
-            saldo += 2.00; 
-            valorMaquina.setText(String.format("%.2f", saldo)); 
+            try {
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(TelaVendingMachine.class.getResourceAsStream("/AudiosVendingMachine/SomDinheiro.wav"));
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioStream);
+                clip.start();
+
+                // Aguarda até a reprodução terminar
+                Thread.sleep(clip.getMicrosecondLength() / 1000);
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException e) {
+                e.printStackTrace();
+            }
+            saldo += 2.00;
+            valorMaquina.setText(String.format("%.2f", saldo));
             atualizarBotoes();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Limite da máquina atingido!", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
-                                      
+
     }//GEN-LAST:event_btnNota2ActionPerformed
 
     private void btnMoeda1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoeda1ActionPerformed
         if (saldo + 1.00 <= limite) {
-            saldo += 1.00; 
-            valorMaquina.setText(String.format("%.2f", saldo)); 
+            try {
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(TelaVendingMachine.class.getResourceAsStream("/AudiosVendingMachine/SomMoeda.wav"));
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioStream);
+                clip.start();
+
+                // Aguarda até a reprodução terminar
+                Thread.sleep(clip.getMicrosecondLength() / 1000);
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException e) {
+                e.printStackTrace();
+            }
+            saldo += 1.00;
+            valorMaquina.setText(String.format("%.2f", saldo));
             atualizarBotoes();
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Limite da máquina atingido!", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnMoeda1ActionPerformed
@@ -471,7 +500,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNota5MouseExited
 
     private void btnNota2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNota2MouseEntered
-        btnNota2.setOpaque(true); 
+        btnNota2.setOpaque(true);
     }//GEN-LAST:event_btnNota2MouseEntered
 
     private void btnNota2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNota2MouseExited
@@ -487,189 +516,213 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMoeda1MouseExited
 
     private void btnDonutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonutActionPerformed
-        
+
         if (produtoEscolhido) {
             JOptionPane.showMessageDialog(this, "Você já escolheu um produto! Pegue-o antes de selecionar outro.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         if (saldo >= precoDonut) {
+            try {
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(TelaVendingMachine.class.getResourceAsStream("/AudiosVendingMachine/SomBotao.wav"));
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioStream);
+                clip.start();
+
+                // Aguarda até a reprodução terminar
+                Thread.sleep(clip.getMicrosecondLength() / 1000);
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException e) {
+                e.printStackTrace();
+            }
             saldo -= precoDonut;
             valorMaquina.setText(String.format("%.2f", saldo));
             DoceEscolhido.setVisible(true);
             btnDonut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
             btnDonut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_donut_amarelo-8.png")));
             ProdEscolhido = "Donut";
-            produtoEscolhido = true; 
-
+            produtoEscolhido = true;
 
             btnCandy.setEnabled(false);
             btnChoco.setEnabled(false);
             btnPegar.setEnabled(true);
 
-
             new Thread(() -> {
                 try {
-                    Thread.sleep(200); 
+                    Thread.sleep(200);
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }
-                atualizarBotoes(); 
+                atualizarBotoes();
             }).start();
-
 
             if (QtdDonut == 3) {
                 --QtdDonut;
                 Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
                 Donut1.setVisible(false);
-                DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_donut_2-8.png")));  
+                DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_donut_2-8.png")));
                 btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
-            }else if(QtdDonut == 2) {
+                btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));
+            } else if (QtdDonut == 2) {
                 --QtdDonut;
                 Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
                 Donut2.setVisible(false);
-                DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_donut_2_escuro-8.png")));  
+                DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_donut_2_escuro-8.png")));
                 btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
-            }else {
+                btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));
+            } else {
                 --QtdDonut;
                 Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
                 Donut3.setVisible(false);
-                DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_donut_3-8.png"))); 
+                DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_donut_3-8.png")));
                 btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-                btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
-                }
-        }else{
+                btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));
+            }
+        } else {
             JOptionPane.showMessageDialog(this, "Saldo insuficiente!", "Aviso", JOptionPane.WARNING_MESSAGE);
             btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         }
     }//GEN-LAST:event_btnDonutActionPerformed
 
     private void btnCandyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCandyActionPerformed
-         
-    if (produtoEscolhido) {
-        JOptionPane.showMessageDialog(this, "Você já escolheu um produto! Pegue-o antes de selecionar outro.", "Aviso", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
 
-    if (saldo >= precoCandy) {
-        saldo -= precoCandy;
-        valorMaquina.setText(String.format("%.2f", saldo));
-        DoceEscolhido.setVisible(true);
-        btnCandy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_candy_amarelo-8.png")));
-        ProdEscolhido = "Candy";
-        produtoEscolhido = true; 
-
-        
-        btnDonut.setEnabled(false);
-        btnChoco.setEnabled(false);
-        btnPegar.setEnabled(true);
-
-       
-        new Thread(() -> {
-            try {
-                Thread.sleep(200); 
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
-            atualizarBotoes(); 
-        }).start();
-
-       
-        if (QtdCandy == 4) {
-            --QtdCandy;
-            Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
-            Candy1.setVisible(false);
-            DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_1-8.png")));
-            btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-            btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
-        } else if (QtdCandy == 3) {
-            --QtdCandy;
-            Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
-            Candy2.setVisible(false);
-            DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_4-8.png")));
-            btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-            btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
-        } else if (QtdCandy == 2) {
-            --QtdCandy;
-            Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
-            Candy3.setVisible(false);
-            DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_3-8.png")));
-            btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-            btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
-        } else {
-            --QtdCandy;
-            Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
-            Candy4.setVisible(false);
-            DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_2-8.png")));
-            btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-            btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
+        if (produtoEscolhido) {
+            JOptionPane.showMessageDialog(this, "Você já escolheu um produto! Pegue-o antes de selecionar outro.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
         }
-    } else {
-        JOptionPane.showMessageDialog(this, "Saldo insuficiente!", "Aviso", JOptionPane.WARNING_MESSAGE);
-        btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-    }
+
+        if (saldo >= precoCandy) {
+            try {
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(TelaVendingMachine.class.getResourceAsStream("/AudiosVendingMachine/SomBotao.wav"));
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioStream);
+                clip.start();
+
+                // Aguarda até a reprodução terminar
+                Thread.sleep(clip.getMicrosecondLength() / 1000);
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException e) {
+                e.printStackTrace();
+            }
+            saldo -= precoCandy;
+            valorMaquina.setText(String.format("%.2f", saldo));
+            DoceEscolhido.setVisible(true);
+            btnCandy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_candy_amarelo-8.png")));
+            ProdEscolhido = "Candy";
+            produtoEscolhido = true;
+
+            btnDonut.setEnabled(false);
+            btnChoco.setEnabled(false);
+            btnPegar.setEnabled(true);
+
+            new Thread(() -> {
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+                atualizarBotoes();
+            }).start();
+
+            if (QtdCandy == 4) {
+                --QtdCandy;
+                Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
+                Candy1.setVisible(false);
+                DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_1-8.png")));
+                btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));
+            } else if (QtdCandy == 3) {
+                --QtdCandy;
+                Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
+                Candy2.setVisible(false);
+                DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_4-8.png")));
+                btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));
+            } else if (QtdCandy == 2) {
+                --QtdCandy;
+                Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
+                Candy3.setVisible(false);
+                DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_3-8.png")));
+                btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));
+            } else {
+                --QtdCandy;
+                Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
+                Candy4.setVisible(false);
+                DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_candy_2-8.png")));
+                btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Saldo insuficiente!", "Aviso", JOptionPane.WARNING_MESSAGE);
+            btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        }
     }//GEN-LAST:event_btnCandyActionPerformed
 
     private void btnChocoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChocoActionPerformed
 
-    if (produtoEscolhido) {
-        JOptionPane.showMessageDialog(this, "Você já escolheu um produto! Pegue-o antes de selecionar outro.", "Aviso", JOptionPane.WARNING_MESSAGE);
-        return;
-    }
-
-    if (saldo >= precoChoco) {
-        saldo -= precoChoco;
-        valorMaquina.setText(String.format("%.2f", saldo));
-        DoceEscolhido.setVisible(true);
-        btnChoco.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnChoco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_choco_amarelo-8.png")));
-        ProdEscolhido = "Choco";
-        produtoEscolhido = true; 
-        
-        
-        btnDonut.setEnabled(false);
-        btnCandy.setEnabled(false);
-        btnPegar.setEnabled(true);
-
-      
-        new Thread(() -> {
-            try {
-                Thread.sleep(200); 
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
-            atualizarBotoes(); 
-        }).start();
-
-        
-        if (QtdChoco == 3) {
-            --QtdChoco;
-            Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
-            Choco1.setVisible(false);
-            DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_choco_1-8.png")));  
-            btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-            btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
-        } else if (QtdChoco == 2) {
-            --QtdChoco;
-            Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
-            Choco2.setVisible(false);
-            DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_choco_2-8.png")));  
-            btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-            btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
-        } else {
-            --QtdChoco;
-            Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
-            Choco3.setVisible(false);
-            DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_choco_3-8.png"))); 
-            btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-            btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));  
+        if (produtoEscolhido) {
+            JOptionPane.showMessageDialog(this, "Você já escolheu um produto! Pegue-o antes de selecionar outro.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
         }
-    } else {
-        JOptionPane.showMessageDialog(this, "Saldo insuficiente!", "Aviso", JOptionPane.WARNING_MESSAGE);
-        btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-    }
+
+        if (saldo >= precoChoco) {
+            try {
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(TelaVendingMachine.class.getResourceAsStream("/AudiosVendingMachine/SomBotao.wav"));
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioStream);
+                clip.start();
+
+                // Aguarda até a reprodução terminar
+                Thread.sleep(clip.getMicrosecondLength() / 1000);
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException e) {
+                e.printStackTrace();
+            }
+            saldo -= precoChoco;
+            valorMaquina.setText(String.format("%.2f", saldo));
+            DoceEscolhido.setVisible(true);
+            btnChoco.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+            btnChoco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_choco_amarelo-8.png")));
+            ProdEscolhido = "Choco";
+            produtoEscolhido = true;
+
+            btnDonut.setEnabled(false);
+            btnCandy.setEnabled(false);
+            btnPegar.setEnabled(true);
+
+            new Thread(() -> {
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+                atualizarBotoes();
+            }).start();
+
+            if (QtdChoco == 3) {
+                --QtdChoco;
+                Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
+                Choco1.setVisible(false);
+                DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_choco_1-8.png")));
+                btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));
+            } else if (QtdChoco == 2) {
+                --QtdChoco;
+                Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
+                Choco2.setVisible(false);
+                DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_choco_2-8.png")));
+                btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));
+            } else {
+                --QtdChoco;
+                Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_aberto-8.png")));
+                Choco3.setVisible(false);
+                DoceEscolhido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/doce_choco_3-8.png")));
+                btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+                btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Saldo insuficiente!", "Aviso", JOptionPane.WARNING_MESSAGE);
+            btnPegar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        }
 
     }//GEN-LAST:event_btnChocoActionPerformed
 
@@ -677,45 +730,45 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         // Reseta as variáveis do painel ProdutoEscolhido
         DoceEscolhidoPanel.setIcon(null); // Remove o ícone do doce selecionado
         valorTrocoEscolhido.setText("00,00"); // Reseta o valor do troco
-    
+
         // Torna visíveis apenas os componentes específicos do painel ProdutoEscolhido
         valorTrocoEscolhido.setVisible(true);
         DoceEscolhidoPanel.setVisible(true);
-    
+
         // Torna o painel ProdutoEscolhido invisível
         ProdutoEscolhido.setVisible(false);
     }
 
-        private void atualizarTrocoVisual(double troco) {
-            // Reseta os ícones dos labels de troco
-            troco1.setIcon(null);
-            troco2.setIcon(null);
-            troco3.setIcon(null);
-            troco4.setIcon(null);
-        
-            // Define os valores das notas e moedas disponíveis
-            int[] valores = {5, 2, 1}; // Notas e moedas disponíveis
-            String[] imagens = {"/ImagensVendingMachine/5reais.jpg", 
-                                "/ImagensVendingMachine/2reais.jpg", 
-                                "/ImagensVendingMachine/1real.png"}; // Caminhos das imagens
-            javax.swing.JLabel[] trocoLabels = {troco1, troco2, troco3, troco4}; // Labels de troco
-        
-            int index = 0; // Índice para os labels de troco
-            for (int i = 0; i < valores.length; i++) {
-                while (troco >= valores[i] && index < trocoLabels.length) {
-                    // Atualiza o ícone do label correspondente
-                    trocoLabels[index].setIcon(new javax.swing.ImageIcon(getClass().getResource(imagens[i])));
-                    troco -= valores[i];
-                    index++;
-                }
+    private void atualizarTrocoVisual(double troco) {
+        // Reseta os ícones dos labels de troco
+        troco1.setIcon(null);
+        troco2.setIcon(null);
+        troco3.setIcon(null);
+        troco4.setIcon(null);
+
+        // Define os valores das notas e moedas disponíveis
+        int[] valores = {5, 2, 1}; // Notas e moedas disponíveis
+        String[] imagens = {"/ImagensVendingMachine/5reais.jpg",
+            "/ImagensVendingMachine/2reais.jpg",
+            "/ImagensVendingMachine/1real.png"}; // Caminhos das imagens
+        javax.swing.JLabel[] trocoLabels = {troco1, troco2, troco3, troco4}; // Labels de troco
+
+        int index = 0; // Índice para os labels de troco
+        for (int i = 0; i < valores.length; i++) {
+            while (troco >= valores[i] && index < trocoLabels.length) {
+                // Atualiza o ícone do label correspondente
+                trocoLabels[index].setIcon(new javax.swing.ImageIcon(getClass().getResource(imagens[i])));
+                troco -= valores[i];
+                index++;
             }
         }
+    }
 
     private void btnPegarActionPerformed(java.awt.event.ActionEvent evt) {
         String mensagem;
         DoceEscolhido.setVisible(false);
         btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_escuro-8.png")));
-    
+
         if (ProdEscolhido.equals("Donut")) {
             mensagem = "Você pegou: Donut";
             imagem = new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/donut_redimensionado.png"));
@@ -729,27 +782,28 @@ public class TelaVendingMachine extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Nenhum produto foi selecionado.", "Aviso", JOptionPane.WARNING_MESSAGE);
             return;
         }
-    
+
         double troco = saldo;
 
         atualizarTrocoVisual(troco);
         saldo = 0.0;
         valorMaquina.setText(String.format("%.2f", saldo));
-    
+
         // Atualiza o painel ProdutoEscolhido
         DoceEscolhidoPanel.setIcon(imagem); // Define a imagem do doce selecionado
         valorTrocoEscolhido.setText(String.format("R$ %.2f", troco)); // Define o valor do troco
         ProdutoEscolhido.setVisible(true); // Torna o painel ProdutoEscolhido visível
-    
+        
+
         // Garante que todos os componentes internos do painel estejam visíveis
         for (java.awt.Component component : ProdutoEscolhido.getComponents()) {
             component.setVisible(true);
         }
-    
+
         // Atualiza o estado da máquina
         Maquina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/maquina_vazia_fechado-8.png")));
         btnPegar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/botao_pegar_tradicional-8.png")));
-    
+
         produtoEscolhido = false;
         btnDonut.setEnabled(true);
         btnCandy.setEnabled(true);
@@ -760,16 +814,26 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         valorTrocoEscolhido.setVisible(true);
         BotaoEscolhidoLabel.setVisible(true);
         DoceEscolhidoPanel.setVisible(true);
+        try {
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(TelaVendingMachine.class.getResourceAsStream("/AudiosVendingMachine/SomTroco.wav"));
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioStream);
+            clip.start();
 
-    
+            // Aguarda até a reprodução terminar
+            Thread.sleep(0);
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException e) {
+            e.printStackTrace();
+        }
+
         // Reabastece a máquina se necessário
         if (QtdDonut == 0 && QtdCandy == 0 && QtdChoco == 0) {
             JOptionPane.showMessageDialog(this, "Máquina vazia. Reabastecendo estoque...", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-    
+
             QtdDonut = 3;
             QtdCandy = 4;
             QtdChoco = 3;
-    
+
             Donut1.setVisible(true);
             Donut2.setVisible(true);
             Donut3.setVisible(true);
@@ -780,9 +844,9 @@ public class TelaVendingMachine extends javax.swing.JFrame {
             Choco1.setVisible(true);
             Choco2.setVisible(true);
             Choco3.setVisible(true);
+        }
+
     }
-    
-    }                                        
 
     /**
      * @param args the command line arguments
