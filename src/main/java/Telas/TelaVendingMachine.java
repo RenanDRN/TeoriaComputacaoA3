@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 public class TelaVendingMachine extends javax.swing.JFrame {
 
@@ -18,6 +19,10 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     private String ProdEscolhido;
     private boolean produtoEscolhido = false;
     private javax.swing.ImageIcon imagem;
+    URL audioDinheiro = TelaVendingMachine.class.getResource("/AudiosVendingMachine/SomDinheiro.wav");
+    URL audioMoeda = TelaVendingMachine.class.getResource("/AudiosVendingMachine/SomMoeda.wav");
+    URL audioBotao = TelaVendingMachine.class.getResource("/AudiosVendingMachine/SomBotao.wav");
+    URL audioTroco = TelaVendingMachine.class.getResource("/AudiosVendingMachine/SomTroco.wav");
 
     public TelaVendingMachine() {
         initComponents();
@@ -430,7 +435,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     private void btnNota5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNota5ActionPerformed
         if (saldo + 5.00 <= limite) {
             try {
-                AudioInputStream audioStream = AudioSystem.getAudioInputStream(TelaVendingMachine.class.getResourceAsStream("/AudiosVendingMachine/SomDinheiro.wav"));
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioDinheiro);
                 Clip clip = AudioSystem.getClip();
                 clip.open(audioStream);
                 clip.start();
@@ -451,7 +456,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     private void btnNota2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNota2ActionPerformed
         if (saldo + 2.00 <= limite) {
             try {
-                AudioInputStream audioStream = AudioSystem.getAudioInputStream(TelaVendingMachine.class.getResourceAsStream("/AudiosVendingMachine/SomDinheiro.wav"));
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioDinheiro);
                 Clip clip = AudioSystem.getClip();
                 clip.open(audioStream);
                 clip.start();
@@ -473,7 +478,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
     private void btnMoeda1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoeda1ActionPerformed
         if (saldo + 1.00 <= limite) {
             try {
-                AudioInputStream audioStream = AudioSystem.getAudioInputStream(TelaVendingMachine.class.getResourceAsStream("/AudiosVendingMachine/SomMoeda.wav"));
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioMoeda);
                 Clip clip = AudioSystem.getClip();
                 clip.open(audioStream);
                 clip.start();
@@ -524,7 +529,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
 
         if (saldo >= precoDonut) {
             try {
-                AudioInputStream audioStream = AudioSystem.getAudioInputStream(TelaVendingMachine.class.getResourceAsStream("/AudiosVendingMachine/SomBotao.wav"));
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioBotao);
                 Clip clip = AudioSystem.getClip();
                 clip.open(audioStream);
                 clip.start();
@@ -592,7 +597,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
 
         if (saldo >= precoCandy) {
             try {
-                AudioInputStream audioStream = AudioSystem.getAudioInputStream(TelaVendingMachine.class.getResourceAsStream("/AudiosVendingMachine/SomBotao.wav"));
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioBotao);
                 Clip clip = AudioSystem.getClip();
                 clip.open(audioStream);
                 clip.start();
@@ -666,7 +671,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
 
         if (saldo >= precoChoco) {
             try {
-                AudioInputStream audioStream = AudioSystem.getAudioInputStream(TelaVendingMachine.class.getResourceAsStream("/AudiosVendingMachine/SomBotao.wav"));
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioBotao);
                 Clip clip = AudioSystem.getClip();
                 clip.open(audioStream);
                 clip.start();
@@ -815,7 +820,7 @@ public class TelaVendingMachine extends javax.swing.JFrame {
         BotaoEscolhidoLabel.setVisible(true);
         DoceEscolhidoPanel.setVisible(true);
         try {
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(TelaVendingMachine.class.getResourceAsStream("/AudiosVendingMachine/SomTroco.wav"));
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioTroco);
             Clip clip = AudioSystem.getClip();
             clip.open(audioStream);
             clip.start();
