@@ -4,6 +4,9 @@
  */
 package Telas;
 
+import java.awt.Color;
+import org.w3c.dom.css.RGBColor;
+
 /**
  *
  * @author Aline
@@ -31,7 +34,8 @@ public class TelaMenu extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         btnVendingMachine = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        btnElevador = new javax.swing.JButton();
+        Titulo = new javax.swing.JLabel();
         Backgroud = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
@@ -51,10 +55,13 @@ public class TelaMenu extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnVendingMachine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/btnVendingMachineOff.png"))); // NOI18N
+        btnVendingMachine.setBackground(new java.awt.Color(153, 255, 255));
+        btnVendingMachine.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnVendingMachine.setText("VENDING MACHINE");
         btnVendingMachine.setBorder(null);
         btnVendingMachine.setContentAreaFilled(false);
         btnVendingMachine.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVendingMachine.setOpaque(true);
         btnVendingMachine.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnVendingMachineMouseEntered(evt);
@@ -68,12 +75,34 @@ public class TelaMenu extends javax.swing.JFrame {
                 btnVendingMachineActionPerformed(evt);
             }
         });
-        getContentPane().add(btnVendingMachine, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, -1, 80));
+        getContentPane().add(btnVendingMachine, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 280, 80));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("CASES");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, -1, 50));
+        btnElevador.setBackground(new java.awt.Color(153, 255, 255));
+        btnElevador.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnElevador.setText("ELEVADOR");
+        btnElevador.setBorder(null);
+        btnElevador.setContentAreaFilled(false);
+        btnElevador.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnElevador.setOpaque(true);
+        btnElevador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnElevadorMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnElevadorMouseExited(evt);
+            }
+        });
+        btnElevador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnElevadorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnElevador, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 280, 80));
+
+        Titulo.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(0, 0, 0));
+        Titulo.setText("CASES");
+        getContentPane().add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, -1, 50));
 
         Backgroud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/BackgroundMenu.jpg"))); // NOI18N
         getContentPane().add(Backgroud, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -93,7 +122,7 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVendingMachineActionPerformed
 
     private void btnVendingMachineMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendingMachineMouseEntered
-      btnVendingMachine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/btnVendingMachineOn.png")));
+        btnVendingMachine.setBackground(new Color(0,204,204));
     }//GEN-LAST:event_btnVendingMachineMouseEntered
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -101,8 +130,22 @@ public class TelaMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowActivated
 
     private void btnVendingMachineMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVendingMachineMouseExited
-        btnVendingMachine.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensVendingMachine/btnVendingMachineOff.png")));
+        btnVendingMachine.setBackground(new Color(153,255,255));
     }//GEN-LAST:event_btnVendingMachineMouseExited
+
+    private void btnElevadorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnElevadorMouseEntered
+        btnElevador.setBackground(new Color(0,204,204));
+    }//GEN-LAST:event_btnElevadorMouseEntered
+
+    private void btnElevadorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnElevadorMouseExited
+        btnElevador.setBackground(new Color(153,255,255));
+    }//GEN-LAST:event_btnElevadorMouseExited
+
+    private void btnElevadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElevadorActionPerformed
+        TelaElevador elevador = new TelaElevador();
+        elevador.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnElevadorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,8 +215,9 @@ public class TelaMenu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Backgroud;
+    private javax.swing.JLabel Titulo;
+    private javax.swing.JButton btnElevador;
     private javax.swing.JButton btnVendingMachine;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
