@@ -1,19 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Telas;
 
 import java.awt.Color;
 
 public class TelaElevador extends javax.swing.JFrame {
 
-
     public TelaElevador() {
         initComponents();
-    }
-
+}
     
+    
+    // Metodos
     
    private int andarAtual = 0;
    
@@ -25,29 +22,29 @@ public class TelaElevador extends javax.swing.JFrame {
             VisorAndar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/baixo.png")));
         }
     }
-
    private void mudarAndarVisual (String imagemFundo){
        backgroundElevador.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagemFundo)));
        VisorAndar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/vazio.png")));
    }
    
- 
-   private void animarPortas(String novoBackground) {
+   
+  private void animarPortas(String novoBackground) {
+    
     Elevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaF.png")));
-
+    
     new javax.swing.Timer(700, e1 -> {
         Elevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaM.png")));
 
         new javax.swing.Timer(900, e2 -> {
             Elevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaA.png")));
- 
+
             new javax.swing.Timer(900, e3 -> {
                 Elevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaM.png")));
 
                 new javax.swing.Timer(700, e4 -> {
                     Elevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaF.png")));
 
-                    new javax.swing.Timer(500, e5 -> {
+                    new javax.swing.Timer(1000, e5 -> {
                         mudarAndarVisual(novoBackground);
                     }) {{
                         setRepeats(false);
@@ -74,8 +71,9 @@ public class TelaElevador extends javax.swing.JFrame {
         start();
     }};
 }
+
    
-    private void trocarAndar(int andarSelecionado){
+   private void trocarAndar(int andarSelecionado){
        switch (andarSelecionado) {
             case 0:
                setas(0);
@@ -83,7 +81,7 @@ public class TelaElevador extends javax.swing.JFrame {
                break;
             case 1:
                setas(1);
-              animarPortas("/ImagensAudiosElevador/bg1.png");
+               animarPortas("/ImagensAudiosElevador/bg1.png");
                break;
              case 2:
                setas(2);
@@ -96,16 +94,9 @@ public class TelaElevador extends javax.swing.JFrame {
        }
        
       andarAtual = andarSelecionado;
-      
    }
- 
 
-   
-   
-   
-   
-   
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -223,8 +214,9 @@ public class TelaElevador extends javax.swing.JFrame {
         trocarAndar(1);
     }//GEN-LAST:event_btn1AndarActionPerformed
 
+
     private void btnTerreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerreoActionPerformed
-        trocarAndar(0);
+       trocarAndar(0);
     }//GEN-LAST:event_btnTerreoActionPerformed
 
     private void btnTerreoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTerreoMouseEntered
