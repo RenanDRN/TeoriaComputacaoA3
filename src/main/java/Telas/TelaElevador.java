@@ -8,13 +8,9 @@ public class TelaElevador extends javax.swing.JFrame {
     public TelaElevador() {
         initComponents();
 }
-    
-    
-    // Metodos
-    
+ 
    private int andarAtual = 0;
-   
-   
+  
     private void setas(int andarSelecionado){
         if (andarSelecionado > andarAtual) {
             VisorAndar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/cima.png")));
