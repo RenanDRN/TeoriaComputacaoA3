@@ -94,6 +94,7 @@ public class TelaElevador extends javax.swing.JFrame {
 
 
     @SuppressWarnings("unchecked")
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -103,8 +104,10 @@ public class TelaElevador extends javax.swing.JFrame {
         btn1Andar = new javax.swing.JButton();
         btnTerreo = new javax.swing.JButton();
         PainelAndares = new javax.swing.JLabel();
+        nAndar = new javax.swing.JLabel();
         VisorAndar = new javax.swing.JLabel();
         Elevador = new javax.swing.JLabel();
+        fundoElevador = new javax.swing.JLabel();
         backgroundElevador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -191,11 +194,19 @@ public class TelaElevador extends javax.swing.JFrame {
         PainelAndares.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/Prancheta.png"))); // NOI18N
         CorParede.add(PainelAndares, new org.netbeans.lib.awtextra.AbsoluteConstraints(992, 290, -1, -1));
 
+        nAndar.setFont(new java.awt.Font("OCR A Extended", 1, 36)); // NOI18N
+        nAndar.setForeground(new java.awt.Color(255, 0, 51));
+        nAndar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        CorParede.add(nAndar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, 30, 30));
+
         VisorAndar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/vazio.png"))); // NOI18N
         CorParede.add(VisorAndar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, -1));
 
         Elevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaF.png"))); // NOI18N
         CorParede.add(Elevador, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
+
+        fundoElevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/ElevadorFundo.png"))); // NOI18N
+        CorParede.add(fundoElevador, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 135, -1, -1));
 
         backgroundElevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/bgT.png"))); // NOI18N
         CorParede.add(backgroundElevador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -207,12 +218,11 @@ public class TelaElevador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn1AndarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1AndarActionPerformed
-        trocarAndar(1);
+      trocarAndar(1);
     }//GEN-LAST:event_btn1AndarActionPerformed
 
-
     private void btnTerreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerreoActionPerformed
-       trocarAndar(0);
+        trocarAndar(0);
     }//GEN-LAST:event_btnTerreoActionPerformed
 
     private void btnTerreoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTerreoMouseEntered
@@ -300,5 +310,7 @@ public class TelaElevador extends javax.swing.JFrame {
     private javax.swing.JButton btn2Andar;
     private javax.swing.JButton btn3Andar;
     private javax.swing.JButton btnTerreo;
+    private javax.swing.JLabel fundoElevador;
+    private javax.swing.JLabel nAndar;
     // End of variables declaration//GEN-END:variables
 }
