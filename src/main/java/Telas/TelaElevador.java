@@ -1,13 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Telas;
 
 import java.awt.Color;
 
 public class TelaElevador extends javax.swing.JFrame {
-
 
     public TelaElevador() {
         initComponents();
@@ -15,7 +11,7 @@ public class TelaElevador extends javax.swing.JFrame {
 
     
     
-   private int andarAtual = 0;
+    private int andarAtual = 0;
    
    
     private void setas(int andarSelecionado){
@@ -23,32 +19,72 @@ public class TelaElevador extends javax.swing.JFrame {
             VisorAndar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/cima.png")));
         } else if (andarSelecionado < andarAtual) {
             VisorAndar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/baixo.png")));
+        } else {
+            VisorAndar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/vazio.png")));
         }
     }
 
+    private void transitarAndares(int andarDestino) {
+        // primeiro, anima a abertura das portas
+        animarPortas("/ImagensAudiosElevador/bg" + (andarAtual == 0 ? "T" : andarAtual) + ".png");
+    
+        // Apos a animação, inicia a transicao entre os andares
+        javax.swing.Timer delayTimer = new javax.swing.Timer(3000, e -> { // aguarda 3 segundos para a animacao das portas
+            int intervalo = 1000; // tempo entre cada andar
+            int direcao = (andarDestino > andarAtual) ? 1 : -1; // define a direcao da transicao
+            setas(andarDestino); // atualiza o icone da seta
+            javax.swing.Timer timer = new javax.swing.Timer(intervalo, null);
+    
+            timer.addActionListener(ev -> {
+                if (andarAtual != andarDestino) {
+                    andarAtual += direcao; // move para o proximo andar
+                    setas(andarDestino); // atualiza o icone da seta
+                    mudarAndarVisual("/ImagensAudiosElevador/bg" + (andarAtual == 0 ? "T" : andarAtual) + ".png");
+    
+                    // Atualiza o texto da label nAndar
+                    nAndar.setText(andarAtual == 0 ? "T" : String.valueOf(andarAtual));
+                } else {
+                    timer.stop(); // para o timer ao chegar no destino
+                    animarPortas("/ImagensAudiosElevador/bg" + (andarDestino == 0 ? "T" : andarDestino) + ".png");
+                }
+            });
+    
+            timer.setRepeats(true);
+            timer.start();
+        });
+    
+        delayTimer.setRepeats(false);
+        delayTimer.start();
+    }
    private void mudarAndarVisual (String imagemFundo){
        backgroundElevador.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagemFundo)));
        VisorAndar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/vazio.png")));
    }
    
- 
-   private void animarPortas(String novoBackground) {
+   
+  private void animarPortas(String novoBackground) {
+    
     Elevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaF.png")));
-
+    
     new javax.swing.Timer(700, e1 -> {
         Elevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaM.png")));
 
         new javax.swing.Timer(900, e2 -> {
             Elevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaA.png")));
- 
+
             new javax.swing.Timer(900, e3 -> {
                 Elevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaM.png")));
 
-                new javax.swing.Timer(700, e4 -> {
-                    Elevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaF.png")));
+                    new javax.swing.Timer(700, e4 -> {
+                        Elevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaF.png")));
 
-                    new javax.swing.Timer(500, e5 -> {
+                    new javax.swing.Timer(1000, e5 -> {
                         mudarAndarVisual(novoBackground);
+                    }) {{
+                        setRepeats(false);
+                        start();
+                    }};
+
                     }) {{
                         setRepeats(false);
                         start();
@@ -64,18 +100,14 @@ public class TelaElevador extends javax.swing.JFrame {
                 start();
             }};
 
-        }) {{
-            setRepeats(false);
-            start();
-        }};
-
     }) {{
         setRepeats(false);
         start();
     }};
 }
+
    
-    private void trocarAndar(int andarSelecionado){
+   private void trocarAndar(int andarSelecionado){
        switch (andarSelecionado) {
             case 0:
                setas(0);
@@ -96,145 +128,140 @@ public class TelaElevador extends javax.swing.JFrame {
        }
        
       andarAtual = andarSelecionado;
-      
    }
- 
 
-   
-   
-   
-   
-   
-    
+
     @SuppressWarnings("unchecked")
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        CorParede = new javax.swing.JPanel();
-        btn3Andar = new javax.swing.JButton();
-        btn2Andar = new javax.swing.JButton();
-        btn1Andar = new javax.swing.JButton();
-        btnTerreo = new javax.swing.JButton();
-        PainelAndares = new javax.swing.JLabel();
-        nAndar = new javax.swing.JLabel();
-        VisorAndar = new javax.swing.JLabel();
-        Elevador = new javax.swing.JLabel();
-        fundoElevador = new javax.swing.JLabel();
-        backgroundElevador = new javax.swing.JLabel();
+       CorParede = new javax.swing.JPanel();
+       btn3Andar = new javax.swing.JButton();
+       btn2Andar = new javax.swing.JButton();
+       btn1Andar = new javax.swing.JButton();
+       btnTerreo = new javax.swing.JButton();
+       PainelAndares = new javax.swing.JLabel();
+       nAndar = new javax.swing.JLabel();
+       VisorAndar = new javax.swing.JLabel();
+       Elevador = new javax.swing.JLabel();
+       fundoElevador = new javax.swing.JLabel();
+       backgroundElevador = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Elevador");
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+       setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+       setTitle("Elevador");
+       getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CorParede.setBackground(new java.awt.Color(153, 204, 255));
-        CorParede.setOpaque(false);
-        CorParede.setPreferredSize(new java.awt.Dimension(1280, 800));
-        CorParede.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+       CorParede.setBackground(new java.awt.Color(153, 204, 255));
+       CorParede.setOpaque(false);
+       CorParede.setPreferredSize(new java.awt.Dimension(1280, 800));
+       CorParede.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btn3Andar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/bt3.png"))); // NOI18N
-        btn3Andar.setContentAreaFilled(false);
-        btn3Andar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn3Andar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn3AndarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn3AndarMouseExited(evt);
-            }
-        });
-        btn3Andar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn3AndarActionPerformed(evt);
-            }
-        });
-        CorParede.add(btn3Andar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1019, 305, 26, 25));
+       btn3Andar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/bt3.png"))); // NOI18N
+       btn3Andar.setContentAreaFilled(false);
+       btn3Andar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+       btn3Andar.addMouseListener(new java.awt.event.MouseAdapter() {
+           public void mouseEntered(java.awt.event.MouseEvent evt) {
+               btn3AndarMouseEntered(evt);
+           }
+           public void mouseExited(java.awt.event.MouseEvent evt) {
+               btn3AndarMouseExited(evt);
+           }
+       });
+       btn3Andar.addActionListener(new java.awt.event.ActionListener() {
+           public void actionPerformed(java.awt.event.ActionEvent evt) {
+               btn3AndarActionPerformed(evt);
+           }
+       });
+       CorParede.add(btn3Andar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1019, 305, 26, 25));
 
-        btn2Andar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/bt2.png"))); // NOI18N
-        btn2Andar.setContentAreaFilled(false);
-        btn2Andar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn2Andar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn2AndarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn2AndarMouseExited(evt);
-            }
-        });
-        btn2Andar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn2AndarActionPerformed(evt);
-            }
-        });
-        CorParede.add(btn2Andar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1019, 332, 26, 25));
+       btn2Andar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/bt2.png"))); // NOI18N
+       btn2Andar.setContentAreaFilled(false);
+       btn2Andar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+       btn2Andar.addMouseListener(new java.awt.event.MouseAdapter() {
+           public void mouseEntered(java.awt.event.MouseEvent evt) {
+               btn2AndarMouseEntered(evt);
+           }
+           public void mouseExited(java.awt.event.MouseEvent evt) {
+               btn2AndarMouseExited(evt);
+           }
+       });
+       btn2Andar.addActionListener(new java.awt.event.ActionListener() {
+           public void actionPerformed(java.awt.event.ActionEvent evt) {
+               btn2AndarActionPerformed(evt);
+           }
+       });
+       CorParede.add(btn2Andar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1019, 332, 26, 25));
 
-        btn1Andar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/bt1.png"))); // NOI18N
-        btn1Andar.setContentAreaFilled(false);
-        btn1Andar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn1Andar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn1AndarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btn1AndarMouseExited(evt);
-            }
-        });
-        btn1Andar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn1AndarActionPerformed(evt);
-            }
-        });
-        CorParede.add(btn1Andar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1019, 359, 26, 25));
+       btn1Andar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/bt1.png"))); // NOI18N
+       btn1Andar.setContentAreaFilled(false);
+       btn1Andar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+       btn1Andar.addMouseListener(new java.awt.event.MouseAdapter() {
+           public void mouseEntered(java.awt.event.MouseEvent evt) {
+               btn1AndarMouseEntered(evt);
+           }
+           public void mouseExited(java.awt.event.MouseEvent evt) {
+               btn1AndarMouseExited(evt);
+           }
+       });
+       btn1Andar.addActionListener(new java.awt.event.ActionListener() {
+           public void actionPerformed(java.awt.event.ActionEvent evt) {
+               btn1AndarActionPerformed(evt);
+           }
+       });
+       CorParede.add(btn1Andar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1019, 359, 26, 25));
 
-        btnTerreo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/btT.png"))); // NOI18N
-        btnTerreo.setContentAreaFilled(false);
-        btnTerreo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnTerreo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnTerreoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnTerreoMouseExited(evt);
-            }
-        });
-        btnTerreo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTerreoActionPerformed(evt);
-            }
-        });
-        CorParede.add(btnTerreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1019, 386, 26, 25));
+       btnTerreo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/btT.png"))); // NOI18N
+       btnTerreo.setContentAreaFilled(false);
+       btnTerreo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+       btnTerreo.addMouseListener(new java.awt.event.MouseAdapter() {
+           public void mouseEntered(java.awt.event.MouseEvent evt) {
+               btnTerreoMouseEntered(evt);
+           }
+           public void mouseExited(java.awt.event.MouseEvent evt) {
+               btnTerreoMouseExited(evt);
+           }
+       });
+       btnTerreo.addActionListener(new java.awt.event.ActionListener() {
+           public void actionPerformed(java.awt.event.ActionEvent evt) {
+               btnTerreoActionPerformed(evt);
+           }
+       });
+       CorParede.add(btnTerreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1019, 386, 26, 25));
 
-        PainelAndares.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/Prancheta.png"))); // NOI18N
-        CorParede.add(PainelAndares, new org.netbeans.lib.awtextra.AbsoluteConstraints(992, 290, -1, -1));
+       PainelAndares.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/Prancheta.png"))); // NOI18N
+       CorParede.add(PainelAndares, new org.netbeans.lib.awtextra.AbsoluteConstraints(992, 290, -1, -1));
 
-        nAndar.setFont(new java.awt.Font("OCR A Extended", 1, 36)); // NOI18N
-        nAndar.setForeground(new java.awt.Color(255, 0, 51));
-        nAndar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        CorParede.add(nAndar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, 30, 30));
+       nAndar.setFont(new java.awt.Font("OCR A Extended", 1, 36)); // NOI18N
+       nAndar.setForeground(new java.awt.Color(255, 0, 51));
+       nAndar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+       nAndar.setText("T");
+       CorParede.add(nAndar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, 30, 30));
 
-        VisorAndar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/vazio.png"))); // NOI18N
-        CorParede.add(VisorAndar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, -1));
+       VisorAndar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/vazio.png"))); // NOI18N
+       CorParede.add(VisorAndar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, -1));
 
-        Elevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaF.png"))); // NOI18N
-        CorParede.add(Elevador, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
+       Elevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaF.png"))); // NOI18N
+       CorParede.add(Elevador, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, -1, -1));
 
-        fundoElevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/ElevadorFundo.png"))); // NOI18N
-        CorParede.add(fundoElevador, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 135, -1, -1));
+       fundoElevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/ElevadorFundo.png"))); // NOI18N
+       CorParede.add(fundoElevador, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 135, -1, -1));
 
-        backgroundElevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/bgT.png"))); // NOI18N
-        CorParede.add(backgroundElevador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+       backgroundElevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/bgT.png"))); // NOI18N
+       CorParede.add(backgroundElevador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        getContentPane().add(CorParede, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        pack();
-        setLocationRelativeTo(null);
-    }// </editor-fold>//GEN-END:initComponents
+       getContentPane().add(CorParede, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+    
+       pack();
+       setLocationRelativeTo(null);
+   }// </editor-fold>//GEN-END:initComponents
 
     private void btn1AndarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1AndarActionPerformed
-        trocarAndar(1);
+        transitarAndares(1);
     }//GEN-LAST:event_btn1AndarActionPerformed
 
     private void btnTerreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerreoActionPerformed
-        trocarAndar(0);
+        transitarAndares(0);
     }//GEN-LAST:event_btnTerreoActionPerformed
 
     private void btnTerreoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTerreoMouseEntered
@@ -270,11 +297,11 @@ public class TelaElevador extends javax.swing.JFrame {
     }//GEN-LAST:event_btn3AndarMouseExited
 
     private void btn2AndarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2AndarActionPerformed
-       trocarAndar(2);
+       transitarAndares(2);
     }//GEN-LAST:event_btn2AndarActionPerformed
 
     private void btn3AndarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3AndarActionPerformed
-       trocarAndar(3);
+       transitarAndares(3);
     }//GEN-LAST:event_btn3AndarActionPerformed
 
     /**
