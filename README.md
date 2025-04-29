@@ -40,4 +40,8 @@ Para ter sucesso nos comando abaixo, é importante que você siga o passo a pass
    ```
    
 ## Apresentação
+### Apresentação máquina de doces:
 [Link da Apresentação](https://www.canva.com/design/DAGjuokjaxE/jE0GaQEI_MzUsJddTMWKNw/edit)
+
+### Apresentação elevador
+[Link da Apresentação](https://www.canva.com/design/DAGl9orGsjI/TEJYym7ITQE8qqweTNzWJA/edit)
