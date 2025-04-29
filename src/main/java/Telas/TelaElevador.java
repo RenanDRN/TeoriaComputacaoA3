@@ -2,6 +2,9 @@
 package Telas;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 
 public class TelaElevador extends javax.swing.JFrame {
 
@@ -10,7 +13,8 @@ public class TelaElevador extends javax.swing.JFrame {
     }
 
     
-    
+    private boolean emTransicao = false;
+
     private int andarAtual = 0;
    
    
@@ -24,111 +28,85 @@ public class TelaElevador extends javax.swing.JFrame {
         }
     }
 
-    private void transitarAndares(int andarDestino) {
-        // primeiro, anima a abertura das portas
-        animarPortas("/ImagensAudiosElevador/bg" + (andarAtual == 0 ? "T" : andarAtual) + ".png");
-    
-        // Apos a animação, inicia a transicao entre os andares
-        javax.swing.Timer delayTimer = new javax.swing.Timer(3000, e -> { // aguarda 3 segundos para a animacao das portas
-            int intervalo = 1000; // tempo entre cada andar
-            int direcao = (andarDestino > andarAtual) ? 1 : -1; // define a direcao da transicao
-            setas(andarDestino); // atualiza o icone da seta
+  private void transitarAndares(int andarDestino) {
+    if (emTransicao) return; // Se já está em transição, não faz nada
+    emTransicao = true; // Começou a transição
+
+    animarPortas(() -> { // Primeiro fecha a porta
+        javax.swing.Timer delayTimer = new javax.swing.Timer(3000, e -> {
+            int intervalo = 1000;
+            int direcao = (andarDestino > andarAtual) ? 1 : -1;
+            setas(andarDestino);
             javax.swing.Timer timer = new javax.swing.Timer(intervalo, null);
-    
+
             timer.addActionListener(ev -> {
                 if (andarAtual != andarDestino) {
-                    andarAtual += direcao; // move para o proximo andar
-                    setas(andarDestino); // atualiza o icone da seta
+                    andarAtual += direcao;
+                    setas(andarDestino);
                     mudarAndarVisual("/ImagensAudiosElevador/bg" + (andarAtual == 0 ? "T" : andarAtual) + ".png");
-    
-                    // Atualiza o texto da label nAndar
                     nAndar.setText(andarAtual == 0 ? "T" : String.valueOf(andarAtual));
                 } else {
-                    timer.stop(); // para o timer ao chegar no destino
-                    animarPortas("/ImagensAudiosElevador/bg" + (andarDestino == 0 ? "T" : andarDestino) + ".png");
+                    timer.stop();
+                    animarPortas(() -> {
+                        emTransicao = false; // Só aqui libera para o usuário clicar de novo
+                    });
                 }
             });
-    
+
             timer.setRepeats(true);
             timer.start();
         });
-    
+
         delayTimer.setRepeats(false);
         delayTimer.start();
-    }
-   private void mudarAndarVisual (String imagemFundo){
-       backgroundElevador.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagemFundo)));
-       VisorAndar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/vazio.png")));
-   }
+    });
+}
+
+private void mudarAndarVisual(String imagemFundo) {
+    backgroundElevador.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagemFundo)));
+    VisorAndar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/vazio.png")));
+}
    
-   
-  private void animarPortas(String novoBackground) {
-    
-    Elevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaF.png")));
-    
-    new javax.swing.Timer(700, e1 -> {
-        Elevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaM.png")));
+  private void animarPortas(Runnable depoisDaAnimacao) {
+    Elevador.setIcon(new ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaF.png")));
 
-        new javax.swing.Timer(900, e2 -> {
-            Elevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaA.png")));
+    javax.swing.Timer t1 = new javax.swing.Timer(700, e -> Elevador.setIcon(new ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaM.png"))));
+    javax.swing.Timer t2 = new javax.swing.Timer(1600, e -> Elevador.setIcon(new ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaA.png"))));
+    javax.swing.Timer t3 = new javax.swing.Timer(2500, e -> Elevador.setIcon(new ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaM.png"))));
+    javax.swing.Timer t4 = new javax.swing.Timer(3200, e -> Elevador.setIcon(new ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaF.png"))));
+    javax.swing.Timer t5 = new javax.swing.Timer(4200, e -> {
+        if (depoisDaAnimacao != null) depoisDaAnimacao.run();
+    });
 
-            new javax.swing.Timer(900, e3 -> {
-                Elevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaM.png")));
+    t1.setRepeats(false);
+    t2.setRepeats(false);
+    t3.setRepeats(false);
+    t4.setRepeats(false);
+    t5.setRepeats(false);
 
-                    new javax.swing.Timer(700, e4 -> {
-                        Elevador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagensAudiosElevador/portaF.png")));
-
-                    new javax.swing.Timer(1000, e5 -> {
-                        mudarAndarVisual(novoBackground);
-                    }) {{
-                        setRepeats(false);
-                        start();
-                    }};
-
-                    }) {{
-                        setRepeats(false);
-                        start();
-                    }};
-
-                }) {{
-                    setRepeats(false);
-                    start();
-                }};
-
-            }) {{
-                setRepeats(false);
-                start();
-            }};
-
-    }) {{
-        setRepeats(false);
-        start();
-    }};
+    t1.start();
+    t2.start();
+    t3.start();
+    t4.start();
+    t5.start();
 }
 
    
-   private void trocarAndar(int andarSelecionado){
-       switch (andarSelecionado) {
-            case 0:
-               setas(0);
-               animarPortas("/ImagensAudiosElevador/bgT.png");
-               break;
-            case 1:
-               setas(1);
-               animarPortas("/ImagensAudiosElevador/bg1.png");
-               break;
-             case 2:
-               setas(2);
-               animarPortas("/ImagensAudiosElevador/bg2.png");
-               break;
-             case 3:
-               setas(3);
-               animarPortas("/ImagensAudiosElevador/bg3.png");
-               break;
-       }
-       
-      andarAtual = andarSelecionado;
-   }
+   private void trocarAndar(int andarSelecionado) {
+    if (emTransicao) return; // Se já está em transição, ignora
+    emTransicao = true; // Começou a troca de andar
+
+    animarPortas(() -> { // Fecha a porta
+        setas(andarSelecionado);
+        mudarAndarVisual("/ImagensAudiosElevador/bg" + (andarSelecionado == 0 ? "T" : andarSelecionado) + ".png");
+        andarAtual = andarSelecionado;
+        nAndar.setText(andarAtual == 0 ? "T" : String.valueOf(andarAtual));
+
+        animarPortas(() -> {
+            emTransicao = false; // Liberou de novo
+        });
+    });
+}
 
 
     @SuppressWarnings("unchecked")
